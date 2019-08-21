@@ -1,0 +1,10 @@
+%article
+  = form_with model: @post, url: posts_path, method: :post, local: true do |f|
+    %h3
+      投稿する
+    = f.file_field :photo, name: 'photo', placeholder: '写真'
+    = f.text_field :name, name: 'name', placeholder: '鳥の名前を入力'
+    = f.text_field :date, name: 'date', placeholder: '例）2019/09/01'
+    /= raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new((Time.now.year)), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
+    = f.text_field :location, name: 'location', placeholder: '例）大阪府'
+    = f.submit '投稿'

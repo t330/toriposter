@@ -1,0 +1,24 @@
+%article
+  %section
+    %h2
+      鳥の写真一覧
+    %ul.photo_list
+      - @posts.each do |post|
+        %li
+          %ul
+            %li
+              = link_to post_path(post.id) do
+                = image_tag post.photo.url
+            %li
+              名前:
+              %span
+                = post.name
+            %li
+              撮影日:
+              %span
+                = post.date
+            %li
+              撮影場所:
+              %span
+                = post.location
+    = paginate(@posts)

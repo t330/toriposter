@@ -1,0 +1,11 @@
+%article
+  = form_with url: @item, method: :post, local: true do |f|
+    = f.text_field :photo, name: 'photo', placeholder: '写真', value: '@post1'
+    = f.text_field :name, name: 'name', placeholder: '鳥の名前を入力'
+    = f.submit '変更'
+
+
+  //<input placeholder="写真" type="text" name="photo">
+  //  <input placeholder="鳥の名前を入力" type="text" name="name">
+  //  <%# <textarea cols="30" name="" placeholder="text" rows="10"></textarea>            %>
+  //  <input type="submit" value="SENT">

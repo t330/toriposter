@@ -1,0 +1,18 @@
+%nav
+  %ul
+    = link_to root_path do
+      %li トップ
+    - if user_signed_in?
+      = link_to new_post_path do
+        %li 投稿する
+      = link_to '' do
+        %li
+          = current_user.email
+          さんのマイページ
+      = link_to destroy_user_session_path, method: :delete do
+        %li ログアウト
+    - unless user_signed_in?
+      = link_to new_user_session_path do
+        %li ログイン
+      = link_to new_user_registration_path do
+        %li 新規登録
