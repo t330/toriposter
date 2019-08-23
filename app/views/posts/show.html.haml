@@ -1,8 +1,8 @@
 %article
   %section
-    %ul
+    %ul.user_photo
       %li
-        .photo_detail
+        .user_photo__photo_detail
           = image_tag @post.photo.url
           //%span.photo_details{:style => "background-image: url(#{@post.photo})"}
       %li
@@ -12,10 +12,9 @@
       %li
         撮影日: #{@post.date}
       %li
-        撮影者: #{@post.user.email}
-      - if current_user
+        撮影者: #{@post.user.nickname}
+      - if user_signed_in? && (@post.user.id == current_user.id)
         %li
-          = link_to 'この投稿を編集', edit_post_path(@post.id)
+          = link_to 'この投稿を編集', edit_post_path
         %li
-          /- binding.pry
           = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete

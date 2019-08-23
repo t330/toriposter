@@ -34,7 +34,6 @@ class PostsController < ApplicationController
     post.update(post_params)
   end
 
-
   def destroy
     post = @post
     @post.destroy
@@ -42,13 +41,13 @@ class PostsController < ApplicationController
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
+    def set_post
+      @post = Post.find(params[:id])
+    end
 
-  def post_params
-    params.require(:post).permit(:name, :photo, :date, :location).merge(user_id: current_user.id)
-    #API導入時にrequire(:post)をつける
-  end
+    def post_params
+      params.require(:post).permit(:name, :photo, :date, :location).merge(user_id: current_user.id)
+      #API導入時にrequire(:post)をつける
+    end
 
 end
