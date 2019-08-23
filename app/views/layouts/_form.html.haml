@@ -1,14 +1,18 @@
 = form_with model: @post, local: true do |f|
   .form_control
-    = f.file_field :photo, placeholder: '写真'
+    .property
+      = f.file_field :photo, placeholder: '写真'
   .form_control
     = f.label :name, '名前: '
-    = f.text_field :name, placeholder: '鳥の名前を入力'
+    .property
+      = f.text_field :name, placeholder: '鳥の名前を入力'
   .form_control
     = f.label :date, '撮影日: '
-    = raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new(Time.now.year), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
+    .property
+      = raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new(Time.now.year), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
   .form_control
     = f.label :location, '撮影場所: '
-    = f.text_field :location, placeholder: '例）大阪府'
+    .property
+      = f.text_field :location, placeholder: '例）大阪府'
   .form_control
     = f.submit '送信'
