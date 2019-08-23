@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_19_035435) do
+ActiveRecord::Schema.define(version: 2019_08_21_132350) do
 
   create_table "birds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_08_19_035435) do
     t.string "name"
     t.string "map_id"
     t.string "user_id"
-    t.string "date", null: false
+    t.date "date"
     t.string "location"
   end
 

@@ -1,11 +1,12 @@
 %article
-  = form_with url: @item, method: :post, local: true do |f|
-    = f.text_field :photo, name: 'photo', placeholder: '写真', value: '@post1'
-    = f.text_field :name, name: 'name', placeholder: '鳥の名前を入力'
-    = f.submit '変更'
+  %h2
+    編集する
+  = render 'layouts/form', post: @post
 
-
-  //<input placeholder="写真" type="text" name="photo">
-  //  <input placeholder="鳥の名前を入力" type="text" name="name">
-  //  <%# <textarea cols="30" name="" placeholder="text" rows="10"></textarea>            %>
-  //  <input type="submit" value="SENT">
+  / When the form above doesn't work properly, use this form below.
+  -# = form_with model: @post, local: true do |f|
+  -#   = f.file_field :photo, placeholder: '写真'
+  -#   = f.text_field :name, placeholder: '鳥の名前を入力'
+  -#   = raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new(Time.now.year), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
+  -#   = f.text_field :location, placeholder: '例）大阪府'
+  -#   = f.submit '送信'

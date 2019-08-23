@@ -5,10 +5,9 @@
     - if user_signed_in?
       = link_to new_post_path do
         %li 投稿する
-      = link_to '' do
+      = link_to user_path(current_user) do
         %li
-          = current_user.email
-          さんのマイページ
+          マイページ
       = link_to destroy_user_session_path, method: :delete do
         %li ログアウト
     - unless user_signed_in?

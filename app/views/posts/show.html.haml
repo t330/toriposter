@@ -6,15 +6,16 @@
           = image_tag @post.photo.url
           //%span.photo_details{:style => "background-image: url(#{@post.photo})"}
       %li
-        名前：#{@post.name}
+        名前: #{@post.name}
       %li
-        撮影者：#{@post.user.email}
+        撮影場所: #{@post.location}
       %li
-        撮影日：#{@post.date}
+        撮影日: #{@post.date}
       %li
-        撮影場所：
+        撮影者: #{@post.user.email}
       - if current_user
         %li
           = link_to 'この投稿を編集', edit_post_path(@post.id)
         %li
-          = link_to 'この投稿を削除', '', method: :delete
+          /- binding.pry
+          = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete
