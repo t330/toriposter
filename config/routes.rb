@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  #devise_scope :user do
-  #  get 'mypage' => 'users/registrations#show'
-  #end
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root 'posts#index'
@@ -17,7 +13,7 @@ Rails.application.routes.draw do
 
   end
 
-  resources :users, :only => [:show] do
+  resources :users, only: [:show] do
 
   end
 

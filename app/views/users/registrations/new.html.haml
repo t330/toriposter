@@ -3,18 +3,26 @@
     会員登録
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
     = render "devise/shared/error_messages", resource: resource
-    .form_control
+    .object
+      = f.label :nickname
+      .object__property
+        = f.text_field :nickname, autofocus: true, autocomplete: "nickname"
+    .object
       = f.label :email
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    .form_control
+      .object__property
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+    .object
       = f.label :password
-      = f.password_field :password, autocomplete: "new-password"
-      - if @minimum_password_length
-        %em
-          (#{@minimum_password_length} characters minimum)
-    .form_control
+      .object__property
+        = f.password_field :password, autocomplete: "new-password"
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+    .object
       = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .form_control
-      = f.submit "登録"
-  = render "users/shared/links"
+      .object__property
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+    .object
+      .object__property
+        = f.submit "登録"
+  /= render "users/shared/links"
