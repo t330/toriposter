@@ -18,3 +18,6 @@
           = link_to 'この投稿を編集', edit_post_path
         %li
           = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete
+    = form_with model: @comment, local: true do |f|
+      = f.text_field :content, placeholder: 'type a comment'
+      = f.submit 'send'
