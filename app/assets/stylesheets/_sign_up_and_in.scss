@@ -1,19 +1,39 @@
-input[type='email'] {
-  border: solid 1px #ccc;
-  width: 200px;
-  height: 30px;
-  padding-left: 10px;
-  border-radius: 4px;
-}
+.sign_up_and_in {
 
-input[type='password'] {
-  border: solid 1px #ccc;
-  width: 200px;
-  height: 30px;
-  padding-left: 10px;
-  border-radius: 4px;
-}
+  input[type='email'] {
+    border: solid 1px #ccc;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 4px;
+  }
 
-input[type='checkbox'] {
-  cursor: pointer;
+  input[type='password'] {
+    border: solid 1px #ccc;
+    width: 200px;
+    height: 30px;
+    padding-left: 10px;
+    border-radius: 4px;
+  }
+
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+
+  input[type='submit'] {
+    width: 60px;
+    height: 30px;
+    border-radius: 4px;
+    background: -moz-linear-gradient(top, rgb(243, 243, 243), rgb(255, 255, 255));
+    background: -webkit-linear-gradient(top, rgb(243, 243, 243), rgb(255, 255, 255));
+    background: liner-gradient(to bottom, rgb(243, 243, 243), rgb(255, 255, 255));
+    cursor: pointer;
+  }
+
+  input[type='submit']:hover {
+    background: -moz-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
+    background: -webkit-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
+    background: liner-gradient(to bottom, rgb(252, 252, 252), rgb(255, 255, 255));
+  }
+
 }

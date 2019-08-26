@@ -212,3 +212,22 @@
   }
 
 }
+
+//add_reference :posts, :user, foreign_key: true, index: true, null: false
+//    add_reference :comments, :user, foreign_key: true, index: true, null: false
+//    add_reference :comments, :post, foreign_key: true, index: true, null: false
+//    change_column :posts, :photo, :text, null: false
+//    add_column :posts, :description, :text
+//
+//#change_column :posts, :user_id, :reference, foreign_key: true, index: true, null: false
+//    #change_column :comments, :user_id, :reference, foreign_key: true, index: true, null: false
+//    #add_column :comments, :post_id, :reference, foreign_key: true, index: true, null: false
+//
+//
+//    -- change_column(:posts, :photo, :text, {:null=>false})
+//    -> 0.0134s
+// -- add_column(:posts, :description, :text)
+//    -> 0.0422s
+// -- add_column(:comments, :advice, :integer)
+//    -> 0.0226s
+// 

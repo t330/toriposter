@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  #before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :fuzzy_search, only: [:index, :search]
 
   def index
     @posts = Post.all.includes(:user).order("created_at DESC").page(params[:page]).per(5)
@@ -22,11 +25,11 @@ class PostsController < ApplicationController
   end
 
   def show
-  
+    @co = Comment.new
   end
 
   def edit
-
+    
   end
 
   def update
@@ -36,13 +39,29 @@ class PostsController < ApplicationController
 
   def destroy
     post = @post
-    @post.destroy
+    post.destroy
+  end
+
+  def search
+    @typed_keyword = params[:keyword]
+    @total_amount = @search.total_count
+    @displayed_amount = @search.length
   end
 
   private
 
     def set_post
       @post = Post.find(params[:id])
+    end
+
+    #def check_correct_user
+    #  if @post.user_id != current_user.id then
+    #    redirect_to root_path
+    #  end
+    #end
+
+    def fuzzy_search
+      @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('created_at DESC').page(params[:page]).per(6)
     end
 
     def post_params
