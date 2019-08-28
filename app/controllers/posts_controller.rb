@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  #before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :fuzzy_search, only: [:index, :search]
 
   def index
@@ -25,7 +25,8 @@ class PostsController < ApplicationController
   end
 
   def show
-    @co = Comment.new
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user)
   end
 
   def edit
@@ -54,11 +55,9 @@ class PostsController < ApplicationController
       @post = Post.find(params[:id])
     end
 
-    #def check_correct_user
-    #  if @post.user_id != current_user.id then
-    #    redirect_to root_path
-    #  end
-    #end
+    def check_correct_user
+      redirect_to root_path unless user_signed_in? && (@post.user.id == current_user.id)
+    end
 
     def fuzzy_search
       @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('created_at DESC').page(params[:page]).per(6)
