@@ -1,23 +1,55 @@
-%article
-  %section
-    %ul.user_photo
+%section
+  %ul.user_photo
+    %li
+      .user_photo__photo_detail
+        = image_tag @post.photo.url
+        //%span.photo_details{:style => "background-image: url(#{@post.photo})"}
+    %li
+      名前: #{@post.name}
+    %li
+      撮影場所: #{@post.location}
+    %li
+      撮影日: #{@post.date}
+    %li
+      撮影者: #{@post.user.nickname}
+    - if user_signed_in? && (@post.user.id == current_user.id) then
       %li
-        .user_photo__photo_detail
-          = image_tag @post.photo.url
-          //%span.photo_details{:style => "background-image: url(#{@post.photo})"}
+        = link_to 'この投稿を編集', edit_post_path
       %li
-        名前: #{@post.name}
-      %li
-        撮影場所: #{@post.location}
-      %li
-        撮影日: #{@post.date}
-      %li
-        撮影者: #{@post.user.nickname}
-      - if user_signed_in? && (@post.user.id == current_user.id)
+        = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete
+%section
+  %h2
+    コメント一覧
+  %ul.comment
+    - if @comments.present? then
+      - @comments.each do |comment|
         %li
-          = link_to 'この投稿を編集', edit_post_path
-        %li
-          = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete
-    = form_with model: @comment, local: true do |f|
-      = f.text_field :content, placeholder: 'type a comment'
-      = f.submit 'send'
+          = link_to user_path(current_user) do
+            = comment.user.nickname
+          さん:
+          %p
+            = comment.content
+    - else
+      %li
+        コメントはありません
+%section
+  - if user_signed_in? then
+    %h3
+      上記の投稿にコメントする
+    = form_with model: [@post, @comment], local: true do |f|
+      .object
+        = f.label :content, 'コメント: '
+        .object__property
+          = f.text_area :content, placeholder: 'コメントを入力してください', cols: 80, rows: 6
+      .object
+        .object__property
+          = f.check_box :advice
+          = f.label :advice, '(投稿内容に対する指摘、提案などはチェックを入れてください)'
+      .object
+        .object__property
+          = f.submit '送信'
+  - else
+    %p
+      投稿するには
+      = link_to 'ログイン', new_user_session_path
+      してください

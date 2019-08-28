@@ -10,8 +10,15 @@ Rails.application.routes.draw do
   root 'posts#index'
   
   resources :posts do
+    get 'create' => 'posts#index'
+    get 'update' => 'posts#index'
+    get 'destroy' => 'posts#index'
 
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      get 'create' => 'posts#index'
+      get 'update' => 'posts#index'
+      get 'destroy' => 'posts#index'
+    end
 
     collection do
       get 'search'

@@ -74,7 +74,7 @@
 
   }
 
-  main {
+  &__content {
     display: flex;
 
     aside {
@@ -83,20 +83,13 @@
       @include aside_map_information_background;
     }
 
-    article {
+    main {
       width: calc(100% - 600px);
-      padding: 20px;
-      box-sizing: border-box;
-
-      h2 {
-        width: 30%;
-        margin-bottom: 30px;
-        font-size: 20px;
-        border-bottom: solid 3px rgb(6, 216, 17);
-      }
 
       section {
-
+        margin: 20px;
+        box-sizing: border-box;
+      
         a {
           color: rgb(16, 102, 199);
         }
@@ -106,11 +99,30 @@
           text-decoration: underline;
         }
       
+        h2 {
+          width: 30%;
+          margin-bottom: 30px;
+          font-size: 20px;
+          border-bottom: solid 3px rgb(6, 216, 17);
+        }
+      
+        h3 {
+          width: 30%;
+          margin-bottom: 30px;
+          padding-left: 7px;
+          font-size: 18px;
+          border-left: solid 10px rgb(6, 216, 17);
+        }
+        
+        p {
+          margin: 10px 0;
+        }
+
         .photo_list {
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-
+        
           &__photo:nth-child(n+3) {
             margin-top: 35px;
           }
@@ -125,7 +137,7 @@
               object-fit: contain;
               background-color: rgb(124, 124, 124);
             }
-
+          
             span {
               font-weight: bold;
             }
@@ -133,16 +145,16 @@
           }
         
         }
-
+      
         .pagination_style {
           line-height: 50px;
           text-align: center;
         }
-
+      
         .user_photo {
           line-height: 30px;
           font-size: 18px;
-
+        
           &__photo_detail {
             box-sizing: border-box;
             width: 720px;
@@ -150,7 +162,7 @@
             margin: 0 auto 20px;
             border: 16px ridge rgb(95, 52, 3);
             background-color: #9e9e9e;
-
+          
             img {
               width: 688px;
               height: 508px;
@@ -161,11 +173,65 @@
             //background-position: center center;
             //background-repeat: no-repeat;
           }
-
+        
         }
 
+        .object {
+          margin-top: 20px;
+        
+          &__property {
+            margin-top: 10px;
+        
+            input[type='file'] {
+              cursor: pointer;
+            }
+            
+            input[type='text'] {
+              border: solid 1px #ccc;
+              width: 200px;
+              height: 30px;
+              padding-left: 10px;
+              border-radius: 4px;
+            }
+            
+            select {
+              border: solid 1px #ccc;
+              width: 60px;
+              height: 30px;
+              padding-left: 10px;
+              border-radius: 4px;
+            }
+
+            &__button_for_posting_photo {
+              width: 60px;
+              height: 30px;
+              border-radius: 4px;
+              background: -moz-linear-gradient(top, rgb(88, 248, 96), rgb(188, 253, 191));
+              background: -webkit-linear-gradient(top, rgb(88, 248, 96), rgb(188, 253, 191));
+              background: liner-gradient(to bottom, rgb(88, 248, 96), rgb(188, 253, 191));
+              cursor: pointer;
+            }
+
+            &__button_for_posting_photo:hover {
+              background: -moz-linear-gradient(top, rgb(127, 248, 133), rgb(224, 253, 226));
+              background: -webkit-linear-gradient(top, rgb(127, 248, 133), rgb(224, 253, 226));
+              background: liner-gradient(to bottom, rgb(127, 248, 133), rgb(224, 253, 226));
+            }
+        
+          }
+        
+        }
+        
+        .comment {
+
+          li {
+            margin: 20px 0;
+          }
+
+        }
+      
       }
-    
+
     }
 
     .map_information {
@@ -212,22 +278,3 @@
   }
 
 }
-
-//add_reference :posts, :user, foreign_key: true, index: true, null: false
-//    add_reference :comments, :user, foreign_key: true, index: true, null: false
-//    add_reference :comments, :post, foreign_key: true, index: true, null: false
-//    change_column :posts, :photo, :text, null: false
-//    add_column :posts, :description, :text
-//
-//#change_column :posts, :user_id, :reference, foreign_key: true, index: true, null: false
-//    #change_column :comments, :user_id, :reference, foreign_key: true, index: true, null: false
-//    #add_column :comments, :post_id, :reference, foreign_key: true, index: true, null: false
-//
-//
-//    -- change_column(:posts, :photo, :text, {:null=>false})
-//    -> 0.0134s
-// -- add_column(:posts, :description, :text)
-//    -> 0.0422s
-// -- add_column(:comments, :advice, :integer)
-//    -> 0.0226s
-// 

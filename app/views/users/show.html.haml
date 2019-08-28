@@ -1,25 +1,24 @@
-%article
-  %section
-    %h2
-      = @user.nickname
-      さんの投稿一覧
-    %ul.user_photo_list
-      - @posts.each do |post|
-        %li.user_photo_list__photo
-          %ul
-            %li
-              = link_to post_path(post.id) do
-                = image_tag post.photo.url
-            %li
-              名前:
-              %span
-                = post.name
-            %li
-              撮影場所:
-              %span
-                = post.location
-            %li
-              撮影日:
-              %span
-                = post.date
-    = paginate(@posts)
+%section
+  %h2
+    = @user.nickname
+    さんの投稿一覧
+  %ul.user_photo_list
+    - @posts.each do |post|
+      %li.user_photo_list__photo
+        %ul
+          %li
+            = link_to post_path(post.id) do
+              = image_tag post.photo.url
+          %li
+            名前:
+            %span
+              = post.name
+          %li
+            撮影場所:
+            %span
+              = post.location
+          %li
+            撮影日:
+            %span
+              = post.date
+  = paginate(@posts)
