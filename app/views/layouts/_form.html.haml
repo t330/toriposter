@@ -3,17 +3,75 @@
     .object__property
       = f.file_field :photo, placeholder: '写真'
   .object
-    = f.label :name, '名前: '
+    = f.label :name, '名前:'
     .object__property
-      = f.text_field :name, placeholder: '鳥の名前を入力'
+      /= f.text_field :name, placeholder: '鳥の名前を入力'
+      = f.collection_select :name, Classification.all, :name, :name, prompt: '---'
+      /= f.select :name, :post, options_for_select(Post.abc)
   .object
-    = f.label :date, '撮影日: '
+    = f.label :date, '撮影日:'
     .object__property
       = raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new(Time.now.year), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
   .object
-    = f.label :location, '撮影場所: '
+    = f.label :location, '撮影場所（都道府県）:'
     .object__property
-      = f.text_field :location, placeholder: '例）大阪府'
+      = f.collection_select :location, Prefecture.all, :name, :name, prompt: '--'
   .object
+    = f.label :locationasassas, '座標を選んでください:'
     .object__property
-      = f.submit '送信', class: 'object__property__button_for_posting_photo'
+      #new_map
+    %script
+      var map;
+      var geocoder;
+      function initMap() {
+      if (GBrowserIsCompatible()) {
+      map = new GMap2(document.getElementById("new_map"));
+      map.setCenter(new GLatLng(36.004673,137.351074), 5);
+      geocoder = new GClientGeocoder();
+      }
+      }
+      function moveAddress() {
+      var address = document.getElementById("address").value;
+      geocoder.getLatLng(address, moveTo);
+      }
+      function moveTo(latlng) {
+      if (latlng){
+      map.setCenter(latlng, 15);
+      map.clearOverlays();
+      var marker = new GMarker(latlng);
+      map.addOverlay(marker);
+      }else{
+      alert("住所から緯度経度に変換できません");
+      }
+      }
+      /console.log('a');
+      /function initMap(){
+      /var latlng = new google.maps.LatLng(35.680865,139.767036);
+      /let map = new google.maps.Map(document.getElementById('new_map'), {
+      /center: latlng,
+      /zoom: 10,
+      /mapTypeId: google.maps.MapTypeId.ROADMAP
+      /});
+      /function toTokyo() {
+      /map.panTo(new google.maps.LatLng(35.680865,139.767036));
+      /}
+      /function toShinbashi() {
+      /map.panTo(new google.maps.LatLng(35.666397,139.758153));
+      /}
+      /function toShinagawa() {
+      /map.panTo(new google.maps.LatLng(35.629867,139.74015));
+      /}
+      /}
+      %input#address{:size => "30", :type => "text", :value => "住所を入力"}/
+      %input#addressbtn{:onclick => "moveAddress()", :type => "button", :value => "座標取得"}/
+
+    
+    /= f.radio_button :location, 'Tokyo', onclick: 'toTokyo()'
+  .object
+    = f.label :description, '備考:'
+    .object__property
+      = f.text_area :description
+  .object
+    = f.submit '送信', class: 'object__property__button_for_posting_photo'
+
+%script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC7ZphzG8WCnD0II3UFAQExNJNleFsE1nk&callback=initMap", defer: 'defer'}

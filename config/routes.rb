@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get 'update' => 'posts#index'
     get 'destroy' => 'posts#index'
 
-    resources :comments, only: [:create] do
+    resources :comments, only: [:create, :edit, :update, :destroy] do
       get 'create' => 'posts#index'
       get 'update' => 'posts#index'
       get 'destroy' => 'posts#index'
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     collection do
       get 'search'
+      get 'bird'
     end
 
   end

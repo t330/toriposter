@@ -1,17 +1,9 @@
 %section
-  = render 'layouts/search_form', search: @search
-  = image_tag (@aaa.photo.url), id: 'a'
-  %script
-    var i = 0;
-    document.getElementById( 'a' ).onmouseout = function() {
-    i += 2;
-    document.getElementById( 'a' ).style.top = i + "px";
-    }
   %h2
-    鳥の写真一覧
-  %ul.photo_list
-    - @posts.each do |post|
-      %li.photo_list__photo
+    = @name
+  %ul.user_photo_list
+    - @bird.each do |post|
+      %li.user_photo_list__photo
         %ul
           %li
             = link_to post_path(post.id) do
@@ -28,4 +20,4 @@
             撮影日:
             %span
               = post.date
-  = paginate(@posts)
+    = paginate(@bird)

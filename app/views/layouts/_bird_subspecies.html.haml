@@ -1,0 +1,3 @@
+= form_with url: bird_posts_path, method: :get, local: true do |b|
+  = b.hidden_field :bird, value: (subspecies.name)
+  = b.submit (subspecies.name)

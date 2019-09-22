@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_hash (2.2.1)
+      activesupport (>= 5.0.0)
     activejob (5.2.3)
       activesupport (= 5.2.3)
       globalid (>= 0.3.6)
@@ -44,6 +46,8 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    ancestry (3.0.7)
+      activerecord (>= 3.2.0)
     archive-zip (0.12.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
@@ -95,6 +99,9 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.11.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
+    geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     haml (5.1.2)
@@ -256,6 +263,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_hash
+  ancestry
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -264,6 +273,8 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   erb2haml
+  font-awesome-rails
+  geocoder
   haml-rails
   jbuilder (~> 2.5)
   kaminari

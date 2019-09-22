@@ -22,7 +22,7 @@
     cursor: pointer;
   }
 
-  input[type='submit'] {
+  .general_button {
     width: 60px;
     height: 30px;
     border-radius: 4px;
@@ -31,8 +31,8 @@
     background: liner-gradient(to bottom, rgb(243, 243, 243), rgb(255, 255, 255));
     cursor: pointer;
   }
-
-  input[type='submit']:hover {
+  
+  .general_button:hover {
     background: -moz-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
     background: -webkit-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
     background: liner-gradient(to bottom, rgb(252, 252, 252), rgb(255, 255, 255));

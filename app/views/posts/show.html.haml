@@ -2,54 +2,56 @@
   %ul.user_photo
     %li
       .user_photo__photo_detail
-        = image_tag @post.photo.url
-        //%span.photo_details{:style => "background-image: url(#{@post.photo})"}
+        = image_tag @post.photo.url, alt: (@post.name)
     %li
-      名前: #{@post.name}
+      名前:
+      = @post.name
     %li
-      撮影場所: #{@post.location}
+      撮影場所:
+      = @post.location
     %li
-      撮影日: #{@post.date}
+      撮影日:
+      = @post.date
     %li
-      撮影者: #{@post.user.nickname}
+      撮影者:
+      = link_to (@post.user.nickname), user_path(@post.user.id)
+      さん
+    %li
+      備考:
+      = simple_format(@post.description)
     - if user_signed_in? && (@post.user.id == current_user.id) then
       %li
         = link_to 'この投稿を編集', edit_post_path
       %li
-        = link_to 'この投稿を削除', post_path, confirm: "ほんとに良いの？？？？？？？？？？", method: :delete
+        = link_to 'この投稿を削除', post_path, method: :delete
 %section
   %h2
-    コメント一覧
-  %ul.comment
-    - if @comments.present? then
-      - @comments.each do |comment|
-        %li
-          = link_to user_path(current_user) do
-            = comment.user.nickname
-          さん:
-          %p
-            = comment.content
-    - else
-      %li
-        コメントはありません
-%section
+    コメントする
   - if user_signed_in? then
-    %h3
-      上記の投稿にコメントする
-    = form_with model: [@post, @comment], local: true do |f|
-      .object
-        = f.label :content, 'コメント: '
-        .object__property
-          = f.text_area :content, placeholder: 'コメントを入力してください', cols: 80, rows: 6
-      .object
-        .object__property
-          = f.check_box :advice
-          = f.label :advice, '(投稿内容に対する指摘、提案などはチェックを入れてください)'
-      .object
-        .object__property
-          = f.submit '送信'
+    = render 'layouts/comment_form', post: @post, comment: @comment
   - else
     %p
       投稿するには
       = link_to 'ログイン', new_user_session_path
       してください
+%section
+  %h3
+    コメント一覧
+  %ul.comment
+    - if @comments.present? then
+      - @comments.each do |comment|
+        %li
+          = link_to (comment.user.nickname), user_path(comment.user.id)
+          さん:
+          %span
+            ( #{comment.created_at} )
+          %p
+            = simple_format(comment.content)
+          - if user_signed_in? && (comment.user.id == current_user.id) then
+            %p
+              = link_to '編集', edit_post_comment_path(@post, comment)
+              = link_to '削除', post_comment_path(@post, comment), method: :delete
+    - else
+      %li
+        コメントはありません
+    = paginate(@comments)

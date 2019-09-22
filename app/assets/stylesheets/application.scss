@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 @import "./reset";
+@import "font-awesome";
 @import "_posts";
 @import "_users";
 @import "_comments";

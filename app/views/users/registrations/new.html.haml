@@ -23,6 +23,5 @@
       .object__property
         = f.password_field :password_confirmation, autocomplete: "new-password"
     .object
-      .object__property
-        = f.submit "登録"
+      = f.submit "登録", class: 'general_button'
   /= render "users/shared/links"

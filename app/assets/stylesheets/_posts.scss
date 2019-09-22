@@ -3,20 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @mixin nav {
-  width: 100%;
-  height: 50px;
   background: -moz-linear-gradient(top, rgb(54, 255, 32), rgb(192, 255, 188));
   background: -webkit-linear-gradient(top, rgb(54, 255, 32), rgb(192, 255, 188));
   background: linear-gradient(to bottom, rgb(54, 255, 32), rgb(192, 255, 188)); 
 }
 
 @mixin ul {
-  line-height: 50px;
   display: flex;
 }
 
 @mixin li {
   padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
   color: #181717;
 }
 
@@ -40,18 +41,22 @@
   margin: auto;
 
   header {
-    line-height: 100px;
     background-color: rgb(16, 187, 1);
 
     h1 {
+      height: 100px;
+      display: flex;
+      align-items: center;
       font-size: 1.5em;
       font-style: italic;
       color: rgb(0, 0, 0);
       padding-left: 20px;
-    }
 
-    span {
-      font-size: 0.8em;
+      span {
+        font-size: 0.8em;
+        padding-top: 5px;
+      }
+
     }
 
   }
@@ -77,10 +82,32 @@
   &__content {
     display: flex;
 
-    aside {
+    .left_aside {
       width: 200px;
-      height: 100vh;
+      padding: 20px;
+      box-sizing: border-box;
       @include aside_map_information_background;
+
+      h3 {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      input[type='submit'] {
+        max-width: 160px;
+        background: transparent;
+        border: none;
+        font-size: 15px;
+        cursor: pointer;
+        margin: 3px 0;
+        padding:0;
+        border-bottom: dashed 1px transparent;
+      }
+
+      input[type='submit']:hover {
+        border-bottom: dashed 1px rgb(77, 77, 77);
+      }
+
     }
 
     main {
@@ -90,6 +117,14 @@
         margin: 20px;
         box-sizing: border-box;
       
+        #a {
+          position: fixed;
+          bottom:0;
+          right:0;
+          width: 100px;
+          height: 100px;
+        }
+
         a {
           color: rgb(16, 102, 199);
         }
@@ -98,7 +133,7 @@
           color: rgb(86, 136, 194);
           text-decoration: underline;
         }
-      
+
         h2 {
           width: 30%;
           margin-bottom: 30px;
@@ -107,7 +142,6 @@
         }
       
         h3 {
-          width: 30%;
           margin-bottom: 30px;
           padding-left: 7px;
           font-size: 18px;
@@ -116,6 +150,35 @@
         
         p {
           margin: 10px 0;
+        }
+
+        .search_form {
+          text-align: right;
+        
+          input[type='text'] {
+            border: solid 1px #ccc;
+            width: 200px;
+            height: 30px;
+            padding-left: 10px;
+            border-radius: 4px;
+          }
+      
+          input[type='submit'] {
+            width: 60px;
+            height: 30px;
+            border-radius: 4px;
+            background: -moz-linear-gradient(top, rgb(243, 243, 243), rgb(255, 255, 255));
+            background: -webkit-linear-gradient(top, rgb(243, 243, 243), rgb(255, 255, 255));
+            background: liner-gradient(to bottom, rgb(243, 243, 243), rgb(255, 255, 255));
+            cursor: pointer;
+          }
+          
+          input[type='submit']:hover {
+            background: -moz-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
+            background: -webkit-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
+            background: liner-gradient(to bottom, rgb(252, 252, 252), rgb(255, 255, 255));
+          }
+
         }
 
         .photo_list {
@@ -130,7 +193,7 @@
           &__photo {
             width: 376px;
             line-height: 23px;
-          
+
             img {
               width: 376px;
               height: 276px;
@@ -168,10 +231,7 @@
               height: 508px;
               object-fit: contain;
             }
-            //background-color: rgb(68, 67, 67);
-            //background-size: contain;
-            //background-position: center center;
-            //background-repeat: no-repeat;
+
           }
         
         }
@@ -202,6 +262,18 @@
               border-radius: 4px;
             }
 
+            #new_map {
+              width: 400px;
+              height: 400px;
+            }
+
+            textarea {
+              border: solid 1px #ccc;
+              border-radius: 4px;
+              width: 400px;
+              height: 100px;
+            }
+
             &__button_for_posting_photo {
               width: 60px;
               height: 30px;
@@ -223,9 +295,15 @@
         }
         
         .comment {
+          width: 500px;
 
           li {
             margin: 20px 0;
+
+            span {
+              color: rgb(148, 148, 148);
+            }
+            
           }
 
         }
@@ -234,18 +312,22 @@
 
     }
 
-    .map_information {
+    .right_aside {
       @include aside_map_information_background;
       width: 400px;
       height: 400px;
+
+      #map {
+        width: 400px;
+        height: 400px;
+      }
+
     }
 
   }
 
   footer {
-    height: 150px;
     background-color: rgb(211, 211, 211);
-    text-align: center;
 
     nav {
       @include nav;
@@ -267,10 +349,13 @@
 
     .copyright {
       height: 100px;
-      line-height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       span {
         font-size: 0.8em;
+        padding-top: 3px;
       }
 
     }

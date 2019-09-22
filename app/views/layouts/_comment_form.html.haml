@@ -1,0 +1,11 @@
+= form_with model: [@post, @comment], local: true do |f|
+  .object
+    = f.label :content, 'コメント: '
+    .object__property
+      = f.text_area :content, placeholder: 'コメントを入力してください'
+  .object
+    .object__property
+      = f.check_box :advice
+      = f.label :advice, '(投稿内容に対する指摘、提案などのコメントをされる場合はチェックを入れてください)'
+  .object
+    = f.submit '送信', class: 'general_button'

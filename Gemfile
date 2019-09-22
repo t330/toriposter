@@ -62,10 +62,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
-# added by me
+# Added by me
 gem 'pry-rails'
 gem 'devise'
 gem 'kaminari'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'carrierwave'
+gem 'font-awesome-rails'
+gem 'ancestry'
+gem 'geocoder'
+gem 'active_hash'

@@ -9,18 +9,21 @@
     %p
       = @total_amount
       件ヒットしました！
-  - else
+  - elsif @total_amount > 6 then
     %p
       全ての投稿を
       = @displayed_amount
       件ずつ表示しています。絞り込むにはキーワードを入力！
+  - else
+    %p
+      全ての投稿を表示しています。絞り込むにはキーワードを入力！
   %ul.user_photo_list
     - @search.each do |post|
       %li.user_photo_list__photo
         %ul
           %li
             = link_to post_path(post.id) do
-              = image_tag post.photo.url
+              = image_tag post.photo.url, alt: (post.name)
           %li
             名前:
             %span
@@ -33,4 +36,4 @@
             撮影日:
             %span
               = post.date
-  = paginate(@search)
+    = paginate(@search)
