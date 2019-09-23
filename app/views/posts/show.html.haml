@@ -1,4 +1,12 @@
 %section
+  %script
+    var aaa = function() {
+    if (window.confirm("kesu?")) {
+    window.alert("abc!");
+    } else {
+    return(false);
+    }
+    };
   %ul.user_photo
     %li
       .user_photo__photo_detail
@@ -21,7 +29,7 @@
       = simple_format(@post.description)
     - if user_signed_in? && (@post.user.id == current_user.id) then
       %li
-        = link_to 'この投稿を編集', edit_post_path
+        = link_to 'この投稿を編集', edit_post_path, onclick: "aaa()"
       %li
         = link_to 'この投稿を削除', post_path, method: :delete
 %section

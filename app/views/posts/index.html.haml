@@ -1,12 +1,37 @@
 %section
   = render 'layouts/search_form', search: @search
   = image_tag (@aaa.photo.url), id: 'a'
+  #abc
+  #aaaaa
   %script
+    function aaB(h, m, sec) {
+    var answer = h * 36000000 + m * 60 + sec;
+    return(answer);
+    };
+    sec1 = aaB(12, 34, 56);
+    window.document.getElementById("abc").innerHTML = sec1;
+
+    window.onload = 
+    window.setInterval(function() {
+    var aaa = new Date();
+    window.document.getElementById("aaaaa").innerHTML = aaa.toLocaleString();
+    console.log("aaa");
+    }, 500);
+    
+
+    var q = new Date();
+    window.document.write(q.toLocaleString());
+    
     var i = 0;
-    document.getElementById( 'a' ).onmouseout = function() {
-    i += 2;
-    document.getElementById( 'a' ).style.top = i + "px";
-    }
+    var h = 100;
+    window.onload = window.document.getElementById( 'a' ).onload = function() {
+    window.setInterval(function() {
+    i += 0.1;
+    h -= 0.02;
+    window.document.getElementById( 'a' ).style.top = i + "px";
+    window.document.getElementById("a").style.height = h + "px";
+    }, 1);
+    };
   %h2
     鳥の写真一覧
   %ul.photo_list
