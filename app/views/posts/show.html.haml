@@ -1,10 +1,11 @@
 %section
   %script
-    var aaa = function() {
-    if (window.confirm("kesu?")) {
-    window.alert("abc!");
-    } else {
-    return(false);
+    var confirmDelete = function() {
+    if (window.confirm("ke?")) {
+    location.href = "#{post_path}";
+    }
+    else {
+
     }
     };
   %ul.user_photo
@@ -29,9 +30,9 @@
       = simple_format(@post.description)
     - if user_signed_in? && (@post.user.id == current_user.id) then
       %li
-        = link_to 'この投稿を編集', edit_post_path, onclick: "aaa()"
+        = link_to 'この投稿を編集', edit_post_path
       %li
-        = link_to 'この投稿を削除', post_path, method: :delete
+        = link_to 'この投稿を削除', post_path, method: :delete, data: { confirm: 'ha?'}
 %section
   %h2
     コメントする
