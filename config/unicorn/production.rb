@@ -20,9 +20,6 @@ $worker  = 2
   listen  $listen
   pid $pid
 
-stderr_path "#{app_path}/log/unicorn.stderr.log"
-stdout_path "#{app_path}/log/unicorn.stdout.log"
-
 #ホットデプロイをするかしないかを設定
   preload_app true
 
