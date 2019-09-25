@@ -13,7 +13,7 @@ require 'capistrano/rails/migrations'
 # require 'capistrano/passenger'
 
 # taskを記述したファイルを読み込むよう設定。　場所と拡張子を指定。
-Dir.glob('lib/capistrano/tasks/*.rb').each { |r| import r }
+Dir.glob('lib/capistrano/tasks/task.rb').each { |r| import r }
 
 # The code below is a default description, turned into a comment by me.
 
