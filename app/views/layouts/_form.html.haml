@@ -1,13 +1,39 @@
+:javascript
+  var geocoder;
+    var map;
+    function initialize() {
+      geocoder = new google.maps.Geocoder();
+      var latlng = new google.maps.LatLng(-34.397, 150.644);
+      var mapOptions = {
+        zoom: 10,
+        center: latlng
+      }
+      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    }
+
+    function codeAddress() {
+      var address = document.getElementById('address').value;
+      geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == 'OK') {
+          map.setCenter(results[0].geometry.location);
+          var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+          });
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    }
+
 = form_with model: @post, local: true do |f|
   .object
     .object__property
       = f.file_field :photo, placeholder: '写真'
   .object
-    = f.label :name, '名前:'
+    = f.label :name, '種名(亜種名):'
     .object__property
-      /= f.text_field :name, placeholder: '鳥の名前を入力'
-      = f.collection_select :name, Classification.all, :name, :name, prompt: '---'
-      /= f.select :name, :post, options_for_select(Post.abc)
+      = f.collection_select :name, BirdList.all, :name, :name, prompt: '--'
   .object
     = f.label :date, '撮影日:'
     .object__property
@@ -19,54 +45,10 @@
   .object
     = f.label :locationasassas, '座標を選んでください:'
     .object__property
-      #new_map
-    %script
-      var map;
-      var geocoder;
-      function initMap() {
-      if (GBrowserIsCompatible()) {
-      map = new GMap2(document.getElementById("new_map"));
-      map.setCenter(new GLatLng(36.004673,137.351074), 5);
-      geocoder = new GClientGeocoder();
-      }
-      }
-      function moveAddress() {
-      var address = document.getElementById("address").value;
-      geocoder.getLatLng(address, moveTo);
-      }
-      function moveTo(latlng) {
-      if (latlng){
-      map.setCenter(latlng, 15);
-      map.clearOverlays();
-      var marker = new GMarker(latlng);
-      map.addOverlay(marker);
-      }else{
-      alert("住所から緯度経度に変換できません");
-      }
-      }
-      /console.log('a');
-      /function initMap(){
-      /var latlng = new google.maps.LatLng(35.680865,139.767036);
-      /let map = new google.maps.Map(document.getElementById('new_map'), {
-      /center: latlng,
-      /zoom: 10,
-      /mapTypeId: google.maps.MapTypeId.ROADMAP
-      /});
-      /function toTokyo() {
-      /map.panTo(new google.maps.LatLng(35.680865,139.767036));
-      /}
-      /function toShinbashi() {
-      /map.panTo(new google.maps.LatLng(35.666397,139.758153));
-      /}
-      /function toShinagawa() {
-      /map.panTo(new google.maps.LatLng(35.629867,139.74015));
-      /}
-      /}
-      %input#address{:size => "30", :type => "text", :value => "住所を入力"}/
-      %input#addressbtn{:onclick => "moveAddress()", :type => "button", :value => "座標取得"}/
-
-    
-    /= f.radio_button :location, 'Tokyo', onclick: 'toTokyo()'
+      .location_selection
+        %input#address{type: "textbox", value: "テックエキスパート　なんば"}/
+        %input{onclick: "codeAddress()", type: "button", value: "検索"}/
+      #map
   .object
     = f.label :description, '備考:'
     .object__property
@@ -74,4 +56,4 @@
   .object
     = f.submit '送信', class: 'object__property__button_for_posting_photo'
 
-%script{src: "https://maps.googleapis.com/maps/api/js?key=a&callback=initMap", defer: 'defer'}
+%script{src: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC7ZphzG8WCnD0II3UFAQExNJNleFsE1nk&callback=initMap", defer: 'defer'}

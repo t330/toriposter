@@ -97,7 +97,7 @@
         max-width: 160px;
         background: transparent;
         border: none;
-        font-size: 15px;
+        font-size: 13.5px;
         cursor: pointer;
         margin: 3px 0;
         padding:0;
@@ -263,24 +263,32 @@
             input[type='file'] {
               cursor: pointer;
             }
-            
-            input[type='text'] {
-              border: solid 1px #ccc;
-              width: 200px;
-              height: 30px;
-              padding-left: 10px;
-              border-radius: 4px;
-            }
-            
+          
             select {
               border: solid 1px #ccc;
-              width: 60px;
               height: 30px;
-              padding-left: 10px;
-              border-radius: 4px;
             }
 
-            #new_map {
+            .location_selection {
+              margin: 10px 0;
+              background-color: aquamarine;
+
+              input[type='textbox'] {
+                width: 250px;
+                height: 30px;
+                border: solid 1px #ccc;
+                border-radius: 4px;
+              }
+
+              input[type='button'] {
+                width: 50px;
+                height: 30px;
+                cursor: pointer;
+              }
+
+            }
+
+            #map {
               width: 400px;
               height: 400px;
             }
@@ -335,7 +343,7 @@
       width: 400px;
       height: 400px;
 
-      #map {
+      .map_info {
         width: 400px;
         height: 400px;
       }

@@ -1,14 +1,23 @@
-- @classifications.each do |family|
-  - family.children.each do |genus|
-    - genus.children.each do |species|
-      - unless species.children.present?
-        %li
-          = form_with url: bird_posts_path, method: :get, local: true do |b|
-            = b.hidden_field :bird, value: (species.name)
-            = b.submit (species.name)
-      - else
-        - species.children.each do |subspecies|
-          %li
-            = form_with url: bird_posts_path, method: :get, local: true do |b|
-              = b.hidden_field :bird, value: (subspecies.name)
-              = b.submit (subspecies.name)
+%ul
+  - @classifications.each do |c|
+    %li
+      = form_with url: bird_posts_path, method: :get, local: true do |b|
+        = b.hidden_field :bird, value: (c.name)
+        = b.submit (c.name)
+
+
+
+/- @classifications.each do |family|
+/  - family.children.each do |genus|
+/    - genus.children.each do |species|
+/      - unless species.children.present?
+/        %li
+/          = form_with url: bird_posts_path, method: :get, local: true do |b|
+/            = b.hidden_field :bird, value: (species.name)
+/            = b.submit (species.name)
+/      - else
+/        - species.children.each do |subspecies|
+/          %li
+/            = form_with url: bird_posts_path, method: :get, local: true do |b|
+/              = b.hidden_field :bird, value: (subspecies.name)
+/              = b.submit (subspecies.name)

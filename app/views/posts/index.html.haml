@@ -41,15 +41,35 @@
     
 
     var i = 0;
-    var h = 100;
-    window.onload = window.document.getElementById( 'a' ).onload = function() {
+    var imax = 50;
+    /var h = 100;
+    var ugoku = function() {
     window.setInterval(function() {
     i += 0.1;
-    h -= 0.02;
+    /h -= 0.02;
     window.document.getElementById( 'a' ).style.top = i + "px";
-    window.document.getElementById("a").style.height = h + "px";
+    /window.document.getElementById("a").style.height = h + "px";
+    if (i > 50) {
+    console.log(i);
+    window.setInterval(function() {
+    i -= 0.1;
+    window.document.getElementById("a").style.top = i + "px";
+    }, 1);
+    }
+    else {
+    window.setInterval(function() {
+    i += 0.1;
+    window.document.getElementById( 'a' ).style.top = i + "px";
     }, 1);
     };
+    }, 1);
+    };
+    /else {
+    //window.setInterval(function() {
+    /i -= 0.02;
+    /window.document.getElementById("a").style.top = i + "px";
+    //}, 1);
+    window.document.getElementById('a').onload = ugoku();
   %h2
     鳥の写真一覧
   %ul.photo_list

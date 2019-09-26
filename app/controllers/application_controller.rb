@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
     end
 
     def left_aside
-      @classifications = Classification.all.order('id ASC').limit(1)
+      @classifications = BirdList.all
+      #@classifications = Classification.all.order('id ASC').limit(1)
       @bird = Post.where('name LIKE(?)', "%#{params[:bird]}%").order('created_at DESC').page(params[:page]).per(6)
     end
 

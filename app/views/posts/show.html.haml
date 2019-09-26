@@ -1,13 +1,4 @@
 %section
-  %script
-    var confirmDelete = function() {
-    if (window.confirm("ke?")) {
-    location.href = "#{post_path}";
-    }
-    else {
-
-    }
-    };
   %ul.user_photo
     %li
       .user_photo__photo_detail
@@ -32,7 +23,7 @@
       %li
         = link_to 'この投稿を編集', edit_post_path
       %li
-        = link_to 'この投稿を削除', post_path, method: :delete, data: { confirm: 'ha?'}
+        = link_to 'この投稿を削除', post_path, method: :delete, data: { confirm: '本当に削除しますか？'}
 %section
   %h2
     コメントする
