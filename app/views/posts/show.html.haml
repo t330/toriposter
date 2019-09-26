@@ -1,3 +1,29 @@
+:javascript
+
+  function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('user_map_info'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+  console.log(uluru.lat);
+  }
+  ////var geocoder;
+  //  var map;
+  //  function initialize() {
+  //    geocoder = new google.maps.Geocoder();
+  //    console.log(#{@post.location});
+  //    var latlng = new google.maps.LatLng(#{@post.location});
+  //    //var latlng = new google.maps.LatLng(-34.397, 150.644);
+  //    var mapOptions = {
+  //      zoom: 10,
+  //      center: latlng
+  //    }
+  //    map = new google.maps.Map(document.getElementById('user_map_info'), mapOptions);
+  //  }
+
 %section
   %ul.user_photo
     %li
@@ -8,7 +34,9 @@
       = @post.name
     %li
       撮影場所:
-      = @post.location
+      #user_map_info
+      %input#address{type: "hidden", value: (@post.location)}/
+      /= @post.location
     %li
       撮影日:
       = @post.date
@@ -55,3 +83,4 @@
       %li
         コメントはありません
     = paginate(@comments)
+%script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=initMap", defer: 'defer'}

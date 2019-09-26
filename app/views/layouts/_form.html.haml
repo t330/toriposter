@@ -20,8 +20,10 @@
               map: map,
               position: results[0].geometry.location
           });
-          document.getElementById('aaa').value = results[0].geometry.location;
-          console.log(latlng);
+          re = /[^()]+/;
+          var ddd = document.getElementById('aaa');
+          ddd.value = results[0].geometry.location;
+          ddd.value = ddd.value.match(re);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -50,7 +52,7 @@
       .location_selection
         %input#address{type: "textbox", value: "テックエキスパート　なんば", placeholder: '場所などを入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
-        = f.text_field :location, id: 'aaa'
+        = f.hidden_field :location, id: 'aaa'
       #map
   .object
     = f.label :description, '備考:'

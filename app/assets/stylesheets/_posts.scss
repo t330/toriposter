@@ -251,6 +251,11 @@
             }
 
           }
+
+          #user_map_info {
+            width: 200px;
+            height: 200px;
+          }
         
         }
 
@@ -341,7 +346,12 @@
     .right_aside {
       @include aside_map_information_background;
       width: 400px;
-      height: 400px;
+
+      h3 {
+        margin: 15px 0;
+        text-align: center;
+        font-size: 18px;
+      }
 
       #map_info {
         width: 400px;
