@@ -46,7 +46,7 @@
     = f.label :locationasassas, '座標を選んでください:'
     .object__property
       .location_selection
-        %input#address{type: "textbox", value: "テックエキスパート　なんば"}/
+        %input#address{type: "textbox", value: "テックエキスパート　なんば", placeholder: '場所などを入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
       #map
   .object
