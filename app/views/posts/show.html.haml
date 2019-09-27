@@ -1,11 +1,11 @@
 :javascript
   function initMap() {
-  var latlng = new google.maps.LatLng(#{@post.location});
+  var birdLocation = {lat: #{@post.location}, lng: #{@post.description}};
   var map = new google.maps.Map(
-    document.getElementById('user_map_info'), {zoom: 10, center: latlng}
+    document.getElementById('user_map_info'), {zoom: 10, center: birdLocation}
   );
-  var marker = new google.maps.Marker({position: latlng, map: map});
-  }
+  var marker = new google.maps.Marker({position: birdLocation, map: map});
+  };
 
 %section
   %ul.user_photo
@@ -15,6 +15,9 @@
     %li
       名前:
       = @post.name
+    %li
+      名前:
+      = @post.location
     %li
       撮影場所:
       #user_map_info

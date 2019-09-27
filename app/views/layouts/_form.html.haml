@@ -20,10 +20,10 @@
               map: map,
               position: results[0].geometry.location
           });
-          re = /[^()]+/;
-          var ddd = document.getElementById('aaa');
-          ddd.value = results[0].geometry.location;
-          ddd.value = ddd.value.match(re);
+          document.getElementById('aaa').value = results[0].geometry.location.lat();
+          document.getElementById('bbb').value = results[0].geometry.location.lng();
+          console.log(document.getElementById('aaa').value);
+          console.log(document.getElementById('bbb').value);
         } else {
           alert('Geocode was not successful for the following reason: ' + status);
         }
@@ -50,14 +50,15 @@
     = f.label :location, '座標を選んでください:'
     .object__property
       .location_selection
-        %input#address{type: "textbox", value: "テックエキスパート　なんば", placeholder: '場所などを入力してください（例：京都駅'}/
+        %input#address{type: "textbox", value: "メルボルン", placeholder: '場所などを入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
-        = f.hidden_field :location, id: 'aaa'
+        = f.text_field :location, id: 'aaa'
+        = f.text_field :description, id: 'bbb'
       #map
   .object
     = f.label :description, '備考:'
     .object__property
-      = f.text_area :description
+      /= f.text_area :description
   .object
     = f.submit '送信', class: 'object__property__button_for_posting_photo'
 

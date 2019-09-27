@@ -1,35 +1,34 @@
--# :javascript
--#   var geocoder;
--#     var map;
--#     function initialize() {
--#       geocoder = new google.maps.Geocoder();
--#       var latlng = new google.maps.LatLng(-34.397, 150.644);
--#       var mapOptions = {
--#         zoom: 10,
--#         center: latlng
--#       }
--#       map = new google.maps.Map(document.getElementById('map_info'), mapOptions);
--#     }
-
--#     function codeAddress() {
--#       var address = document.getElementById('address').value;
--#       geocoder.geocode( { 'address': address}, function(results, status) {
--#         if (status == 'OK') {
--#           map.setCenter(results[0].geometry.location);
--#           var marker = new google.maps.Marker({
--#               map: map,
--#               position: results[0].geometry.location
--#           });
--#           document.getElementById('aaa').value = results[0].geometry.location;
--#           console.log(latlng);
--#         } else {
--#           alert('Geocode was not successful for the following reason: ' + status);
--#         }
--#       });
--#     }
-
--# %aside.right_aside
--#   %h3
--#     直近10件のハトの撮影場所情報
--#   #map_info
--# %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=initMap", defer: 'defer'}
+:javascript
+  function initMap() {
+        var map = new google.maps.Map(document.getElementById('map_info'), {
+          zoom: 3,
+          center: {lat: -28.024, lng: 140.887}
+        });
+        // Create an array of alphabetical characters used to label the markers.
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        // Add some markers to the map.
+        // Note: The code uses the JavaScript Array.prototype.map() method to
+        // create an array of markers based on a given "locations" array.
+        // The map() method here has nothing to do with the Google Maps API.
+        var markers = locations.map(function(location, i) {
+          return new google.maps.Marker({
+            position: location,
+            label: labels[i % labels.length]
+          });
+        });
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, markers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+      };
+      
+      var locations = [
+      {lat: -28.024, lng: 140.887}
+      ]
+      
+%script{src: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'}
+%aside.right_aside
+  %h3
+    直近10件のハトの撮影場所情報
+  = @bird_locations
+  #map_info
+%script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=initMap", defer: 'defer'}
