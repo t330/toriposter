@@ -11,12 +11,15 @@ class ApplicationController < ActionController::Base
 
     def left_aside
       @classifications = BirdList.all
-      #@classifications = Classification.all.order('id ASC').limit(1)
       @bird = Post.where('name LIKE(?)', "%#{params[:bird]}%").order('created_at DESC').page(params[:page]).per(6)
     end
 
     def right_aside
-      @bird_locations = Post.all.order('created_at DESC').limit(1)
+      @bird_locations = Post.all.order('created_at DESC').limit(2)
+      @location1_lat = @bird_locations[0][:location]
+      @location1_lng = @bird_locations[0][:description]
+      @location2_lat = @bird_locations[1][:location]
+      @location2_lng = @bird_locations[1][:description]
     end
 
 end

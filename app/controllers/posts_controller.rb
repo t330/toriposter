@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @map = @post.build_map
   end
 
   def create
@@ -61,8 +62,7 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:name, :photo, :date, :location, :description).merge(user_id: current_user.id)
-      #API導入時にrequire(:post)をつける
+      params.require(:post).permit(:name, :photo, :date, :location, :description, map_attributes: [:latitude, :longitude]).merge(user_id: current_user.id)
     end
 
 end

@@ -42,23 +42,24 @@
     = f.label :date, '撮影日:'
     .object__property
       = raw sprintf(f.date_select(:date, start_year: (Time.now.year), end_year: (Time.now.year - 100), default: Date.new(Time.now.year), prompt: "--", use_month_numbers: true, date_separator: '%s'),'年 ', '月 ') + '日'
-  /.object
-  /  = f.label :location, '撮影場所（都道府県）:'
-  /  .object__property
-  /    = f.collection_select :location, Prefecture.all, :name, :name, prompt: '--'
   .object
-    = f.label :location, '座標を選んでください:'
+    = f.label :location, '撮影場所（都道府県）:'
+    .object__property
+      = f.collection_select :location, Prefecture.all, :name, :name, prompt: '--'
+  .object
+    /= f.label :location, '座標を選んでください:'
     .object__property
       .location_selection
         %input#address{type: "textbox", value: "メルボルン", placeholder: '場所などを入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
-        = f.text_field :location, id: 'aaa'
-        = f.text_field :description, id: 'bbb'
+        = f.fields_for :map do |m| 
+          = m.text_field :latitude, id: 'aaa'
+          = m.text_field :longitude, id: 'bbb'
       #map
   .object
     = f.label :description, '備考:'
     .object__property
-      /= f.text_area :description
+      = f.text_area :description
   .object
     = f.submit '送信', class: 'object__property__button_for_posting_photo'
 

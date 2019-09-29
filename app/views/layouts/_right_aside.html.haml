@@ -1,8 +1,8 @@
 :javascript
   function initMap() {
         var map = new google.maps.Map(document.getElementById('map_info'), {
-          zoom: 3,
-          center: {lat: -28.024, lng: 140.887}
+          zoom: 4,
+          center: {lat: 35.68123620000001, lng: 139.76712480000003}
         });
         // Create an array of alphabetical characters used to label the markers.
         var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,19 +16,26 @@
             label: labels[i % labels.length]
           });
         });
+        console.log(markers);
         // Add a marker clusterer to manage the markers.
         var markerCluster = new MarkerClusterer(map, markers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
       };
       
-      var locations = [
-      {lat: -28.024, lng: 140.887}
-      ]
-      
+  var locations = [
+    {lat: #{@location1_lat}, lng: #{@location1_lng}},
+    {lat: #{@location2_lat}, lng: #{@location2_lng}}
+    ];
+  //var abc = ["aa", "bb", "eee"]
+  //var i = 0;
+  //while (i < locations.length) {
+  //  console.log(locations[i++]);
+  //};
+  
+
 %script{src: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'}
 %aside.right_aside
   %h3
     直近10件のハトの撮影場所情報
-  = @bird_locations
   #map_info
 %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=initMap", defer: 'defer'}
