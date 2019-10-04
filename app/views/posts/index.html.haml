@@ -1,54 +1,54 @@
 %section
   = render 'layouts/search_form', search: @search
   = image_tag (@aaa.photo.url), id: 'a'
-  #abc
-  #aaaaa
-  %script
-    function aaB(h, m, sec) {
-    var answer = h * 3600 + m * 60 + sec;
-    return(answer);
-    };
-    window.setInterval(function() {
-    hyoji1 = new Date();
-    hyoji2 = new Date();
-    hyoji3 = new Date();
-    jikan = hyoji1.getHours();
-    fun = hyoji2.getMinutes();
-    byo = hyoji3.getSeconds();
-    sec1 = aaB(jikan, fun, byo);
-    window.document.getElementById("abc").innerHTML = "本日残り" + (86400 - sec1) + "秒";
-    }, 1);
+  -# #abc
+  -# #aaaaa
+  -# %script
+  -#   function aaB(h, m, sec) {
+  -#   var answer = h * 3600 + m * 60 + sec;
+  -#   return(answer);
+  -#   };
+  -#   window.setInterval(function() {
+  -#   hyoji1 = new Date();
+  -#   hyoji2 = new Date();
+  -#   hyoji3 = new Date();
+  -#   jikan = hyoji1.getHours();
+  -#   fun = hyoji2.getMinutes();
+  -#   byo = hyoji3.getSeconds();
+  -#   sec1 = aaB(jikan, fun, byo);
+  -#   window.document.getElementById("abc").innerHTML = "本日残り" + (86400 - sec1) + "秒";
+  -#   }, 1);
 
-    var yatta = function() {
-    var anohako = window.document.getElementById("aaaaa");
-    anohako.innerHTML = "ここ押して";
-    anohako.onclick = function() {
-    window.setInterval(function() {
-    var aaa = new Date();
-    window.document.getElementById("aaaaa").innerHTML = aaa.toLocaleString();
-    console.log("aaa");
-    }, 1);
-    };
-    };
-    yatta();
+  -#   var yatta = function() {
+  -#   var anohako = window.document.getElementById("aaaaa");
+  -#   anohako.innerHTML = "ここ押して";
+  -#   anohako.onclick = function() {
+  -#   window.setInterval(function() {
+  -#   var aaa = new Date();
+  -#   window.document.getElementById("aaaaa").innerHTML = aaa.toLocaleString();
+  -#   console.log("aaa");
+  -#   }, 1);
+  -#   };
+  -#   };
+  -#   yatta();
 
-    q();
-    console.log(q);
-    function q() {
-    var eee = new Date();
-    eee = "フランス表記：" + eee.toLocaleString("fr")
-    };
+  -#   q();
+  -#   console.log(q);
+  -#   function q() {
+  -#   var eee = new Date();
+  -#   eee = "フランス表記：" + eee.toLocaleString("fr")
+  -#   };
     
-
+  :javascript
     var i = 0;
     var imax = 50;
-    /var h = 100;
+    //var h = 100;
     var ugoku = function() {
     window.setInterval(function() {
     i += 0.1;
-    /h -= 0.02;
+    //h -= 0.02;
     window.document.getElementById( 'a' ).style.top = i + "px";
-    /window.document.getElementById("a").style.height = h + "px";
+    //window.document.getElementById("a").style.height = h + "px";
     if (i > 50) {
     console.log(i);
     window.setInterval(function() {
@@ -64,10 +64,10 @@
     };
     }, 1);
     };
-    /else {
+    //else {
     //window.setInterval(function() {
-    /i -= 0.02;
-    /window.document.getElementById("a").style.top = i + "px";
+    //i -= 0.02;
+    //window.document.getElementById("a").style.top = i + "px";
     //}, 1);
     window.document.getElementById('a').onload = ugoku();
   %h2
