@@ -31,10 +31,13 @@ set :rbenv_ruby, '2.5.1'
 #出力するログのレベル。
 set :log_level, :debug
 
+set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicron.pid" }
+
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
   end
 
   desc 'Create database'

@@ -1,6 +1,3 @@
-shared_path = "/var/www/rails/toriposter/shared/"
-current_path = "/var/www/rails/toriposter/current"
-
 # ソケット経由で通信する
 # ここがcapistranoの設定と合致していないと失敗する
 listen File.expand_path('tmp/sockets/unicorn.sock', shared_path)

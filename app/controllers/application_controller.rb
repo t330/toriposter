@@ -15,11 +15,17 @@ class ApplicationController < ActionController::Base
     end
 
     def right_aside
-      @bird_locations = Post.all.order('created_at DESC').limit(2)
-      @location1_lat = @bird_locations[0][:location]
-      @location1_lng = @bird_locations[0][:description]
-      @location2_lat = @bird_locations[1][:location]
-      @location2_lng = @bird_locations[1][:description]
+      @bird_locations = Post.all.order('created_at DESC').limit(5)
+      @location1 = @bird_locations[0]
+      @location1 = @bird_locations[0]
+      @location2 = @bird_locations[1]
+      @location2 = @bird_locations[1]
+      @location3 = @bird_locations[2]
+      @location3 = @bird_locations[2]
+      @location4 = @bird_locations[3]
+      @location4 = @bird_locations[3]
+      @location5 = @bird_locations[4]
+      @location5 = @bird_locations[4]
     end
 
 end

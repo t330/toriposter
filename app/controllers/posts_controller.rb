@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post_lat = @post.map.latitude
+    @post_lng = @post.map.longitude
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order('created_at DESC').page(params[:page]).per(5)
   end

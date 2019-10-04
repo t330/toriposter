@@ -1,35 +1,3 @@
-:javascript
-  var geocoder;
-    var map;
-    function initialize() {
-      geocoder = new google.maps.Geocoder();
-      var latlng = new google.maps.LatLng(-34.397, 150.644);
-      var mapOptions = {
-        zoom: 10,
-        center: latlng
-      }
-      map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    }
-
-    function codeAddress() {
-      var address = document.getElementById('address').value;
-      geocoder.geocode( { 'address': address}, function(results, status) {
-        if (status == 'OK') {
-          map.setCenter(results[0].geometry.location);
-          var marker = new google.maps.Marker({
-              map: map,
-              position: results[0].geometry.location
-          });
-          document.getElementById('aaa').value = results[0].geometry.location.lat();
-          document.getElementById('bbb').value = results[0].geometry.location.lng();
-          console.log(document.getElementById('aaa').value);
-          console.log(document.getElementById('bbb').value);
-        } else {
-          alert('Geocode was not successful for the following reason: ' + status);
-        }
-      });
-    }
-
 = form_with model: @post, local: true do |f|
   .object
     .object__property
@@ -47,14 +15,14 @@
     .object__property
       = f.collection_select :location, Prefecture.all, :name, :name, prompt: '--'
   .object
-    /= f.label :location, '座標を選んでください:'
+    = f.label :latitude, '座標を選んでください:'
     .object__property
       .location_selection
-        %input#address{type: "textbox", value: "メルボルン", placeholder: '場所などを入力してください（例：京都駅'}/
+        %input#address{type: "textbox", placeholder: '場所などを入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
         = f.fields_for :map do |m| 
-          = m.text_field :latitude, id: 'aaa'
-          = m.text_field :longitude, id: 'bbb'
+          = m.hidden_field :latitude, id: 'latitude'
+          = m.hidden_field :longitude, id: 'longitude'
       #map
   .object
     = f.label :description, '備考:'
@@ -62,5 +30,3 @@
       = f.text_area :description
   .object
     = f.submit '送信', class: 'object__property__button_for_posting_photo'
-
-%script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=initMap", defer: 'defer'}
