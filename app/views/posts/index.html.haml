@@ -1,6 +1,6 @@
 %section
   = render 'layouts/search_form', search: @search
-  = image_tag (@aaa.photo.url), id: 'a'
+  /= image_tag (@aaa.photo.url), id: 'a'
   -# #abc
   -# #aaaaa
   -# %script
@@ -39,37 +39,37 @@
   -#   eee = "フランス表記：" + eee.toLocaleString("fr")
   -#   };
     
-  :javascript
-    var i = 0;
-    var imax = 50;
-    //var h = 100;
-    var ugoku = function() {
-    window.setInterval(function() {
-    i += 0.1;
-    //h -= 0.02;
-    window.document.getElementById( 'a' ).style.top = i + "px";
-    //window.document.getElementById("a").style.height = h + "px";
-    if (i > 50) {
-    console.log(i);
-    window.setInterval(function() {
-    i -= 0.1;
-    window.document.getElementById("a").style.top = i + "px";
-    }, 1);
-    }
-    else {
-    window.setInterval(function() {
-    i += 0.1;
-    window.document.getElementById( 'a' ).style.top = i + "px";
-    }, 1);
-    };
-    }, 1);
-    };
-    //else {
-    //window.setInterval(function() {
-    //i -= 0.02;
-    //window.document.getElementById("a").style.top = i + "px";
-    //}, 1);
-    window.document.getElementById('a').onload = ugoku();
+  /:javascript
+  /  var i = 0;
+  /  var imax = 50;
+  /  //var h = 100;
+  /  var ugoku = function() {
+  /  window.setInterval(function() {
+  /  i += 0.1;
+  /  //h -= 0.02;
+  /  window.document.getElementById( 'a' ).style.top = i + "px";
+  /  //window.document.getElementById("a").style.height = h + "px";
+  /  if (i > 50) {
+  /  //console.log(i);
+  /  window.setInterval(function() {
+  /  i -= 0.1;
+  /  window.document.getElementById("a").style.top = i + "px";
+  /  }, 1);
+  /  }
+  /  else {
+  /  window.setInterval(function() {
+  /  i += 0.1;
+  /  window.document.getElementById( 'a' ).style.top = i + "px";
+  /  }, 1);
+  /  };
+  /  }, 1);
+  /  };
+  //else {
+  //window.setInterval(function() {
+  //i -= 0.02;
+  //window.document.getElementById("a").style.top = i + "px";
+  //}, 1);
+  /window.document.getElementById('a').onload = ugoku();
   %h2
     鳥の写真一覧
   %ul.photo_list

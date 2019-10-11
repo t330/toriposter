@@ -93,19 +93,32 @@
         margin-bottom: 10px;
       }
 
-      input[type='submit'] {
-        max-width: 160px;
-        background: transparent;
-        border: none;
-        font-size: 13.5px;
-        cursor: pointer;
-        margin: 3px 0;
-        padding:0;
-        border-bottom: dashed 1px transparent;
+      li::before {
+        display: inline-block;
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgb(15, 235, 33);
       }
 
-      input[type='submit']:hover {
-        border-bottom: dashed 1px rgb(77, 77, 77);
+      form {
+        display: inline;
+
+        input[type='submit'] {
+          background: transparent;
+          border: none;
+          font-size: 12px;
+          cursor: pointer;
+          margin: 3px 0;
+          padding:0;
+          border-bottom: dashed 1px transparent;
+        }
+
+        input[type='submit']:hover {
+          border-bottom: dashed 1px rgb(77, 77, 77);
+        }
+
       }
 
     }
