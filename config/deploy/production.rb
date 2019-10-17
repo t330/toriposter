@@ -1,5 +1,5 @@
 # EC2サーバーのIP、EC2サーバーにログインするユーザー名、サーバーのロールを記述
-server '13.112.108.182', user: 'ec2-user', roles: %w{app db web} 
+#server '13.112.108.182', user: 'ec2-user', roles: %w{app db web} 
 
 
 # server-based syntax
