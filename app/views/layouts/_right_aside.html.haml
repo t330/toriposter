@@ -1,29 +1,29 @@
--# :javascript
--#   function rightAside() {
--#     var map = new google.maps.Map(document.getElementById('map_info'), {
--#       zoom: 4,
--#       center: {lat: 35.68123620000001, lng: 139.76712480000003}
--#     });
--#     var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
--#     var markers = locations.map(function(location, i) {
--#       return new google.maps.Marker({
--#         position: location,
--#         label: labels[i % labels.length]
--#       });
--#     });
--#     var markerCluster = new MarkerClusterer(
--#       map,
--#       markers,
--#       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
--#     );
--#   };
--#   var locations = [
--#     {lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}},
--#     {lat: #{@location2.map.latitude}, lng: #{@location2.map.longitude}},
--#     {lat: #{@location3.map.latitude}, lng: #{@location3.map.longitude}},
--#     {lat: #{@location4.map.latitude}, lng: #{@location4.map.longitude}},
--#     {lat: #{@location5.map.latitude}, lng: #{@location5.map.longitude}}
--#   ];
+:javascript
+  function rightAside() {
+    var map = new google.maps.Map(document.getElementById('map_info'), {
+      zoom: 4,
+      center: {lat: 35.68123620000001, lng: 139.76712480000003}
+    });
+    var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var markers = locations.map(function(location, i) {
+      return new google.maps.Marker({
+        position: location,
+        label: labels[i % labels.length]
+      });
+    });
+    var markerCluster = new MarkerClusterer(
+      map,
+      markers,
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
+    );
+  };
+  var locations = [
+    {lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}},
+    {lat: #{@location2.map.latitude}, lng: #{@location2.map.longitude}},
+    {lat: #{@location3.map.latitude}, lng: #{@location3.map.longitude}},
+    {lat: #{@location4.map.latitude}, lng: #{@location4.map.longitude}},
+    {lat: #{@location5.map.latitude}, lng: #{@location5.map.longitude}}
+  ];
 %aside.right_aside
   %h3
     直近5件のハトの撮影場所情報
