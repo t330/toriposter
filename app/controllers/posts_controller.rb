@@ -6,8 +6,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.includes(:user).order("created_at DESC").page(params[:page]).per(6)
-    #@a = @posts.prefecture.name
-    #@aaa = Post.find(2)
   end
 
   def new

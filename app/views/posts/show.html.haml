@@ -1,69 +1,67 @@
-%p
-  aaa
--# :javascript
--#   function postsId() {
--#     var birdLocation = {lat: #{@post_lat}, lng: #{@post_lng}};
--#     var map = new google.maps.Map(
--#       document.getElementById('user_map_info'), {zoom: 10, center: birdLocation}
--#     );
--#     var marker = new google.maps.Marker({position: birdLocation, map: map});
--#   };
--# %section
--#   %ul.user_photo
--#     %li
--#       .user_photo__photo_detail
--#         = image_tag @post.photo.url, alt: (@post.name)
--#     %li
--#       名前:
--#       = @post.name
--#     %li
--#       撮影場所:
--#       #user_map_info
--#     %li
--#       撮影日:
--#       = @post.date
--#     %li
--#       撮影者:
--#       = link_to (@post.user.nickname), user_path(@post.user.id)
--#       さん
--#     %li
--#       備考:
--#       = simple_format(@post.description)
--#     - if user_signed_in? && (@post.user.id == current_user.id) then
--#       %li
--#         = link_to 'この投稿を編集', edit_post_path
--#       %li
--#         = link_to 'この投稿を削除', post_path, method: :delete, data: { confirm: '本当に削除しますか？'}
--# %section
--#   %h2
--#     コメントする
--#   - if user_signed_in? then
--#     = render 'layouts/comment_form', post: @post, comment: @comment
--#   - else
--#     %p
--#       投稿するには
--#       = link_to 'ログイン', new_user_session_path
--#       してください
--# %section
--#   %h3
--#     コメント一覧
--#   %ul.comment
--#     - if @comments.present? then
--#       - @comments.each do |comment|
--#         %li
--#           = link_to (comment.user.nickname), user_path(comment.user.id)
--#           さん:
--#           %span
--#             ( #{comment.created_at} )
--#           %p
--#             = simple_format(comment.content)
--#           - if user_signed_in? && (comment.user.id == current_user.id) then
--#             %p
--#               = link_to '編集', edit_post_comment_path(@post, comment)
--#               = link_to '削除', post_comment_path(@post, comment), method: :delete
--#     - else
--#       %li
--#         コメントはありません
--#     = paginate(@comments)
--# - if (request.url =~ (/\/posts\/\d+/))
--#   %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", async: '', defer: 'defer'}
+:javascript
+  function postsId() {
+    var birdLocation = {lat: #{@post_lat}, lng: #{@post_lng}};
+    var map = new google.maps.Map(
+      document.getElementById('user_map_info'), {zoom: 10, center: birdLocation}
+    );
+    var marker = new google.maps.Marker({position: birdLocation, map: map});
+  };
+%section
+  %ul.user_photo
+    %li
+      .user_photo__photo_detail
+        = image_tag @post.photo.url, alt: (@post.name)
+    %li
+      名前:
+      = @post.name
+    %li
+      撮影場所:
+      #user_map_info
+    %li
+      撮影日:
+      = @post.date
+    %li
+      撮影者:
+      = link_to (@post.user.nickname), user_path(@post.user.id)
+      さん
+    %li
+      備考:
+      = simple_format(@post.description)
+    - if user_signed_in? && (@post.user.id == current_user.id) then
+      %li
+        = link_to 'この投稿を編集', edit_post_path
+      %li
+        = link_to 'この投稿を削除', post_path, method: :delete, data: { confirm: '本当に削除しますか？'}
+%section
+  %h2
+    コメントする
+  - if user_signed_in? then
+    = render 'layouts/comment_form', post: @post, comment: @comment
+  - else
+    %p
+      投稿するには
+      = link_to 'ログイン', new_user_session_path
+      してください
+%section
+  %h3
+    コメント一覧
+  %ul.comment
+    - if @comments.present? then
+      - @comments.each do |comment|
+        %li
+          = link_to (comment.user.nickname), user_path(comment.user.id)
+          さん:
+          %span
+            ( #{comment.created_at} )
+          %p
+            = simple_format(comment.content)
+          - if user_signed_in? && (comment.user.id == current_user.id) then
+            %p
+              = link_to '編集', edit_post_comment_path(@post, comment)
+              = link_to '削除', post_comment_path(@post, comment), method: :delete
+    - else
+      %li
+        コメントはありません
+    = paginate(@comments)
+- if (request.url =~ (/\/posts\/\d+/))
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", async: '', defer: 'defer'}
