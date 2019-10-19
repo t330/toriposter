@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :left_aside
-  before_action :right_aside
+  #before_action :right_aside
 
   protected
 
