@@ -37,7 +37,7 @@ set :default_env, {
 }
 
 # credentials.yml.enc用のシンボリックリンクを追加
-set :linked_files, %w{ config/credentials.yml.enc }
+#set :linked_files, %w{ config/credentials.yml.enc }
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
