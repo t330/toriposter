@@ -17,63 +17,35 @@
       {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'}
     );
   };
-  var locations = [{lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}}];
-  if ('#{@location2}' != null) {
-    locations.push({lat: #{@location2.map.latitude}, lng: #{@location2.map.longitude}});
-    if ('#{@location3}' != null) {
-      locations.push({lat: #{@location3.map.latitude}, lng: #{@location3.map.longitude}});
-      if ('#{@location4}' != null) {
-        locations.push({lat: #{@location4.map.latitude}, lng: #{@location4.map.longitude}});
-        if ('#{@location5}' != null) {
-          locations.push({lat: #{@location5.map.latitude}, lng: #{@location5.map.longitude}});
-        };
-      };
-    };
-  };
-  //window.document.getElementById('aaa').innerHTML = 'locations.length';
-  //if (1 == 1) {
-  //var locations = [{lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}}];
-  //console.log('ok');
-  //};
-  //if (#{@location1} != null) {
-  //  locations.push({lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}});
-  //  if (#{@location2} != null) {
-  //  locations.push({lat: #{@location2.map.latitude}, lng: #{@location2.map.longitude}});
-  //  };
-  //};
-  //var locations = [
-  //  {lat: #{@location1.map.latitude}, lng: #{@location1.map.longitude}},
-  //  {lat: #{@location2.map.latitude}, lng: #{@location2.map.longitude}},
-  //  {lat: #{@location3.map.latitude}, lng: #{@location3.map.longitude}},
-  //  {lat: #{@location4.map.latitude}, lng: #{@location4.map.longitude}},
-  //  {lat: #{@location5.map.latitude}, lng: #{@location5.map.longitude}}
-  //];
+  var locations = [
+    {lat: #{@maps[0].latitude}, lng: #{@maps[0].longitude}},
+    {lat: #{@maps[1].latitude}, lng: #{@maps[1].longitude}},
+    {lat: #{@maps[2].latitude}, lng: #{@maps[2].longitude}},
+    {lat: #{@maps[3].latitude}, lng: #{@maps[3].longitude}},
+    {lat: #{@maps[4].latitude}, lng: #{@maps[4].longitude}}
+  ];
 %aside.right_aside
-  %h3
-    直近#{@bird_locations_amount}件のハトの撮影場所情報
   - if request.url !~ /\/posts\/new/ && request.url !~ /\/posts\/\d+/
-    - if @location1.present?
+    - if @maps.present?
+      %h3
+        直近#{@maps.length}件のハトの撮影場所情報
       #map_info
       %ul
         %li
           A:
-          = @location1.name
-        - if @location2.present?
-          %li
-            B:
-            = @location2.name
-          - if @location3.present?
-            %li
-              C:
-              = @location3.name
-            - if @location4.present?
-              %li
-                D:
-                = @location4.name
-              - if @location5.present?
-                %li
-                  E:
-                  = @location5.name
+          = @maps[0].post.name
+        %li
+          B:
+          = @maps[1].post.name
+        %li
+          C:
+          = @maps[2].post.name
+        %li
+          D:
+          = @maps[3].post.name
+        %li
+          E:
+          = @maps[4].post.name
       %script{src: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'}
       %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=rightAside", async: '', defer: 'defer'}
     - else
