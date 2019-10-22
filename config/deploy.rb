@@ -56,7 +56,7 @@ namespace :deploy do
   #  end
   #end
   #before :starting, 'deploy:upload'
-  #after :finishing, 'deploy:cleanup'
+  after :finishing, 'deploy:cleanup'
 end
 
 # Default branch is :master
