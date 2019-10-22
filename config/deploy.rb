@@ -36,8 +36,8 @@ set :default_env, {
   AWS_SECRET_ACCESS_KEY: ENV["AWS_SECRET_ACCESS_KEY"]
 }
 
-## credentials.yml.enc用のシンボリックリンクを追加
-#set :linked_files, %w{ config/credentials.yml.enc }
+# credentials.yml.enc用のシンボリックリンクを追加
+set :linked_files, %w{ config/credentials.yml.enc }
 
 # デプロイ処理が終わった後、Unicornを再起動するための記述
 after 'deploy:publishing', 'deploy:restart'
