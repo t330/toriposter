@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post_lng = @post.map.longitude
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order('created_at DESC').page(params[:page]).per(5)
+    @notice = Comment.where(['post_id = ? AND advice = ?', params[:id], 1]).first
   end
 
   def edit

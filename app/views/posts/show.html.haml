@@ -7,6 +7,9 @@
     var marker = new google.maps.Marker({position: birdLocation, map: map});
   };
 %section
+  - if @notice != nil
+    %p.notice
+      ※この投稿には内容についてのご意見、ご提案コメントが存在します。
   %ul.user_photo
     %li
       .user_photo__photo_detail
@@ -48,17 +51,32 @@
   %ul.comment
     - if @comments.present? then
       - @comments.each do |comment|
-        %li
-          = link_to (comment.user.nickname), user_path(comment.user.id)
-          さん:
-          %span
-            ( #{comment.created_at} )
-          %p
-            = simple_format(comment.content)
-          - if user_signed_in? && (comment.user.id == current_user.id) then
+        - if comment.advice == 0 then
+          %li
+            = link_to (comment.user.nickname), user_path(comment.user.id)
+            さん:
+            %span
+              ( #{comment.created_at} )
             %p
-              = link_to '編集', edit_post_comment_path(@post, comment)
-              = link_to '削除', post_comment_path(@post, comment), method: :delete
+              = simple_format(comment.content)
+            - if user_signed_in? && (comment.user.id == current_user.id) then
+              %p
+                = link_to '編集', edit_post_comment_path(@post, comment)
+                = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
+        - else
+          %li.advice_comment
+            .remark
+              ◎ご意見、ご提案コメント
+            = link_to (comment.user.nickname), user_path(comment.user.id)
+            さん:
+            %span
+              ( #{comment.created_at} )
+            %p
+              = simple_format(comment.content)
+            - if user_signed_in? && (comment.user.id == current_user.id) then
+              %p
+                = link_to '編集', edit_post_comment_path(@post, comment)
+                = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
     - else
       %li
         コメントはありません
