@@ -18,7 +18,7 @@ http://18.176.27.147/
 * Creating a user account (gem: Devise)
 * Posting, editing and deleting a photo (strage: AWS S3, uploader: CarrierWave)
 * Making, editing and deleting a comment on a posted photo
-* Sharing locations of shot pigeons on Google Maps with users (API: Google Maps API)
+* Sharing locations of shot pigeons on Google Maps with users (by using Google Maps API)
 * Pointing out a mistake, for instance, a name of a shot pigeon
 
 # Contribution
