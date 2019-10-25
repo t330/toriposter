@@ -47,7 +47,7 @@
           E:
           = @maps[4].post.name
       %script{src: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'}
-      %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=rightAside", async: '', defer: 'defer'}
+      %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=rightAside", defer: 'defer'}
     - else
       %p
         地図は投稿が1件以上で表示されます
