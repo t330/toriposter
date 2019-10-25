@@ -24,7 +24,7 @@ OS: MacOS
 
 # Contribution
 
-I used the code for a reset stylesheet:  
+I used the code below for a reset stylesheet:  
 https://kutarosan.com/reset-css/#CSS-3
 
 <!-- # README
