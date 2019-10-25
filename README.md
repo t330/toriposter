@@ -20,6 +20,7 @@ http://18.176.27.147/
 * Making, editing and deleting a comment on a posted photo
 * Sharing locations of shot pigeons on Google Maps with users (by using Google Maps API)
 * Pointing out a mistake, for instance, a name of a shot pigeon
+* Pagination (gem: kaminari)
 
 # Contribution
 
