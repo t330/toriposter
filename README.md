@@ -22,6 +22,11 @@ OS: MacOS
 * Sharing locations of shot pigeons on Google Maps with users (API: Google Maps API)
 * Pointing out a mistake, for instance, a name of a shot pigeon
 
+# Contribution
+
+I used the code for a reset stylesheet:
+https://kutarosan.com/reset-css/#CSS-3
+
 <!-- # README
 
 This README would normally document whatever steps are necessary to get the
