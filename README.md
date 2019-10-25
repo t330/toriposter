@@ -8,7 +8,7 @@ http://18.176.27.147/
 
 # Development Environment
 
-* Languages: Ruby, HTML, CSS, Javascript  
+* Languages: Ruby, HTML, CSS, JavaScript  
 * DB: MySQL  
 * Tools: Ruby on Rails, GitHub, Visual Studio Code  
 * OS: MacOS (OS on production environment: Amazon Linux)
