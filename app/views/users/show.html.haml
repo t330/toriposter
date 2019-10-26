@@ -6,7 +6,7 @@
     - @posts.each do |post|
       %li.user_photo_list__photo
         %ul
-          %li
+          %li.adjustment
             = link_to post_path(post.id) do
               = image_tag post.photo.url, alt: (post.name)
           %li

@@ -55,11 +55,16 @@
     margin-left: calc(56px / 2);
     line-height: 18px;
 
+    .adjustment {
+      width: 248px;
+      height: 186px;
+      background-color: rgb(124, 124, 124);
+    }
+
     img {
       width: 248px;
       height: 186px;
       object-fit: contain;
-      background-color: rgb(124, 124, 124);
     }
 
     span {

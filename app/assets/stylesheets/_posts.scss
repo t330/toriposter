@@ -34,6 +34,7 @@
 
 * {
   text-decoration: none;
+  font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
 }
 
 .wrapper {
@@ -202,11 +203,16 @@
             width: 376px;
             line-height: 23px;
 
+            .adjustment {
+              width: 376px;
+              height: 276px;
+              background-color: rgb(124, 124, 124);
+            }
+
             img {
               width: 376px;
               height: 276px;
               object-fit: contain;
-              background-color: rgb(124, 124, 124);
             }
           
             span {
@@ -223,6 +229,7 @@
         }
 
         .notice {
+          height: 16px;
           color: rgb(255, 0, 0);
         }
       
@@ -335,20 +342,23 @@
             span {
               color: rgb(148, 148, 148);
             }
+
+            .editing_deleting_room {
+              height: 16px;
+            }
             
           }
 
           .advice_comment {
             border: solid 2px bisque;
+          }
 
-            .remark {
-              margin: 4px 0;
-              text-align: right;
-              font-style: italic;
-              font-size: 14px;
-              color: rgb(85, 85, 85);
-            }
-
+          .remark {
+            height: 14px;
+            text-align: right;
+            font-style: italic;
+            font-size: 14px;
+            color: rgb(85, 85, 85);
           }
 
         }
