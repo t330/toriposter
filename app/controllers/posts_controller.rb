@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :fuzzy_search, only: [:index, :search]
 
   def index
-    @posts = Post.all.includes(:user).order("created_at DESC").page(params[:page]).per(6)
+    @posts = Post.includes(:user).order("id DESC").page(params[:page]).per(6)
   end
 
   def new
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post_lat = @post.map.latitude
     @post_lng = @post.map.longitude
     @comment = Comment.new
-    @comments = @post.comments.includes(:user).order('created_at DESC').page(params[:page]).per(5)
+    @comments = @post.comments.includes(:user).order('id DESC').page(params[:page]).per(5)
     @notice = Comment.where(['post_id = ? AND advice = ?', params[:id], 1]).first
   end
 
@@ -59,7 +59,7 @@ class PostsController < ApplicationController
     end
 
     def fuzzy_search
-      @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('created_at DESC').page(params[:page]).per(6)
+      @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(6)
     end
 
     def post_params
