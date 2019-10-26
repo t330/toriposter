@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
     def right_aside
-      @maps = Map.all.order('id DESC').limit(5)
+      @maps = Map.all.order('created_at ASC').limit(5)
     end
 
 end
