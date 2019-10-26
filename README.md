@@ -1,16 +1,14 @@
 # Overview
 
-It is an application that a user can post photos of a pigeon including information of a name of a pigeon, date taken, location on Google Maps and so on.
+It is an application that a user can post photos of a pigeon.
 
-# URL
-
-http://18.176.27.147/
+* URL: http://18.176.27.147/
 
 # Development Environment
 
-* Languages: Ruby, HTML, CSS, JavaScript  
-* DB: MySQL  
-* Tools: Ruby on Rails, GitHub, Visual Studio Code  
+* Languages: Ruby, HTML, CSS, JavaScript
+* DB: MySQL
+* Tools: Ruby on Rails, GitHub, Visual Studio Code
 * OS: MacOS (OS on production environment: Amazon Linux)
 
 # Implemented Functions
@@ -21,6 +19,8 @@ http://18.176.27.147/
 * Sharing locations of shot pigeons on Google Maps with users (by using Google Maps API)
 * Pointing out a mistake, for instance, a name of a shot pigeon
 * Pagination (gem: kaminari)
+* HAML and SCSS notation
+
 
 # Contribution
 
