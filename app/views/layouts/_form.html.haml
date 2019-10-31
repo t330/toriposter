@@ -59,4 +59,4 @@
   .object
     = f.submit '送信', class: 'object__property__button_for_posting_photo'
 - if request.url =~ /\/posts\/new/ || request.url =~ /\/posts\/\d+/
-  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsNew", async: '', defer: 'defer'}
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsNew", defer: 'defer'}

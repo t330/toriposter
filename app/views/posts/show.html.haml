@@ -85,4 +85,4 @@
         コメントはありません
     = paginate(@comments)
 - if (request.url =~ (/\/posts\/\d+/))
-  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", async: '', defer: 'defer'}
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", defer: 'defer'}
