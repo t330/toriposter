@@ -33,19 +33,24 @@
       %ul
         %li
           A:
-          = @maps[0].post.name
+          = link_to post_path(@maps[0].post_id) do
+            = @maps[0].post.name
         %li
           B:
-          = @maps[1].post.name
+          = link_to post_path(@maps[1].post_id) do
+            = @maps[1].post.name
         %li
           C:
-          = @maps[2].post.name
+          = link_to post_path(@maps[2].post_id) do
+            = @maps[2].post.name
         %li
           D:
-          = @maps[3].post.name
+          = link_to post_path(@maps[3].post_id) do
+            = @maps[3].post.name
         %li
           E:
-          = @maps[4].post.name
+          = link_to post_path(@maps[4].post_id) do
+            = @maps[4].post.name
       %script{src: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js'}
       %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=rightAside", defer: 'defer'}
     - else
