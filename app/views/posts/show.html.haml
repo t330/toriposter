@@ -30,7 +30,7 @@
     %li
       備考:
       = simple_format(@post.description)
-    - if user_signed_in? && (@post.user.id == current_user.id) then
+    - if user_signed_in? && (@post.user.id == current_user.id)
       %li
         = link_to 'この投稿を編集', edit_post_path
       %li
@@ -38,7 +38,7 @@
 %section
   %h2
     コメントする
-  - if user_signed_in? then
+  - if user_signed_in?
     = render 'layouts/comment_form', post: @post, comment: @comment
   - else
     %p
@@ -51,9 +51,9 @@
   %h3
     コメント一覧
   %ul.comment
-    - if @comments.present? then
+    - if @comments.present?
       - @comments.each do |comment|
-        - if comment.advice == 0 then
+        - if comment.advice == 0
           %li
             .remark
             = link_to (comment.user.nickname), user_path(comment.user.id)
@@ -63,7 +63,7 @@
             %p
               = simple_format(comment.content)
             .editing_deleting_room
-              - if user_signed_in? && (comment.user.id == current_user.id) then
+              - if user_signed_in? && (comment.user.id == current_user.id)
                 = link_to '編集', edit_post_comment_path(@post, comment)
                 = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
         - else
@@ -77,7 +77,7 @@
             %p
               = simple_format(comment.content)
             .editing_deleting_room
-              - if user_signed_in? && (comment.user.id == current_user.id) then
+              - if user_signed_in? && (comment.user.id == current_user.id)
                 = link_to '編集', edit_post_comment_path(@post, comment)
                 = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
     - else

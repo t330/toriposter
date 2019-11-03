@@ -1,6 +1,6 @@
 %section
   = render 'layouts/search_form', search: @search
-  - if @typed_keyword.present? then
+  - if @typed_keyword.present?
     %p
       "
       = @typed_keyword
@@ -9,7 +9,7 @@
     %p
       = @total_amount
       件ヒットしました！
-  - elsif @total_amount > 6 then
+  - elsif @total_amount > 6
     %p
       全ての投稿を
       = @displayed_amount
