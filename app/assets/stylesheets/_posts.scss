@@ -160,12 +160,16 @@
           margin: 10px 0;
         }
 
+        .highlight {
+          background-color:yellow;
+        }
+
         .search_form {
           display: flex;
           justify-content: flex-end;
           align-items: center;
         
-          input[type='text'] {
+          .search_field {
             border: solid 1px #ccc;
             width: 200px;
             height: 30px;

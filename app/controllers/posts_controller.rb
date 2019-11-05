@@ -59,7 +59,20 @@ class PostsController < ApplicationController
     end
 
     def fuzzy_search
-      @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(6)
+      #@search = []
+      #split_keyword = params[:keyword]&.split(/[[:blank:]]+/)
+      #split_keyword&.each do |keyword|
+      #  next if keyword == ""
+      #  @search = Post.where('name LIKE(?)', "%#{keyword}%")
+      #end
+      @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(999)
+      gon.bird_list = BirdList.all
+      #@search&.uniq!
+      respond_to do |format|
+        format.html
+        format.json
+      end
+      #binding.pry
     end
 
     def post_params
