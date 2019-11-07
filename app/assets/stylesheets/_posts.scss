@@ -405,18 +405,20 @@
   footer {
     background-color: rgb(211, 211, 211);
 
-    .to_top_close {
+    .to_top {
       position: fixed;
       right: 0;
       bottom: 0;
       width: 70px;
       height: 70px;
       cursor: pointer;
+      background-color: white;
       
       #eye_close {
         width: 70px;
         height: 70px;
         object-fit: cover;
+        border-radius: 10px;
       }
 
       #eye_open {
@@ -424,6 +426,7 @@
         width: 70px;
         height: 70px;
         object-fit: cover;
+        border-radius: 10px;
       }
 
     }
