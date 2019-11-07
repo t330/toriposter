@@ -405,22 +405,27 @@
   footer {
     background-color: rgb(211, 211, 211);
 
-    nav {
-      @include nav;
-    
-      ul {
-        @include ul;
+    .to_top_close {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
       
-        li {
-          @include li;
-        }
-      
-        li:hover {
-          @include li_hover;
-        }
-      
+      #eye_close {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
       }
-    
+
+      #eye_open {
+        display: none;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+      }
+
     }
 
     .copyright {
