@@ -35,6 +35,9 @@ $(document).on('turbolinks:load', function() {
   };
   $(".search_field").on("keyup", function() {
     var input = $(".search_field").val();
+    function highlight() {
+      $(".photo_list").highlight(input);
+    };
     $(function() {
       var words = [];
       gon.bird_list.forEach(function(bird) {
@@ -55,6 +58,7 @@ $(document).on('turbolinks:load', function() {
       if (search.length !== 0) {
         search.forEach(function(searchResult) {
           displayResult(searchResult);
+          highlight();
         });
       } else {
         noSearchResult("一致する投稿がありません");
