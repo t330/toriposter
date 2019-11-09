@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function() {
     var html = `<div class='no_search_result'>${msg}</div>`;
     $(".photo_list").append(html);
   };
-  $(".search_field").on("keyup", function() {
+  $(".search_field").on("blur keyup change click", function() {
     var input = $(".search_field").val();
     function highlight() {
       $(".photo_list").highlight(input);
@@ -68,4 +68,9 @@ $(document).on('turbolinks:load', function() {
       alert("検索に失敗しました！もう一度検索してください");
     });
   });
+  $(".abc").on("click", function(){
+    var aaa = $(".abc").text();
+    console.log(aaa);
+    $(".search_field").val(aaa);
+  })
 });
