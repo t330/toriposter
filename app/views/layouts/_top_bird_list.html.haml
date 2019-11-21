@@ -1,19 +1,20 @@
-- @posts.each do |post|
-  %li.photo_list__photo
-    %ul
-      %li.adjustment
-        = link_to post_path(post.id) do
-          = image_tag post.photo.url, alt: (post.name)
-      %li
-        名前:
-        %span
-          = post.name
-      %li
-        撮影場所:
-        %span
-          = post.location
-      %li
-        撮影日:
-        %span
-          = post.date
+%ul.photo_list
+  - @posts.each do |post|
+    %li.photo_list__photo
+      %ul
+        %li.adjustment
+          = link_to post_path(post.id) do
+            = image_tag post.photo.url, alt: (post.name)
+        %li
+          名前:
+          %span
+            = post.name
+        %li
+          撮影場所:
+          %span
+            = post.location
+        %li
+          撮影日:
+          %span
+            = post.date
 = paginate(@posts, remote: true)
