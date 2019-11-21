@@ -55,6 +55,7 @@ $(document).on('turbolinks:load', function() {
     })
     .done(function(search) {
       $(".photo_list").empty();
+      $(".pagination_style").empty();
       if (search.length !== 0) {
         search.forEach(function(searchResult) {
           displayResult(searchResult);
