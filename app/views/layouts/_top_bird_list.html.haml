@@ -1,6 +1,6 @@
-%ul.photo_list
+%ul.user_photo_list
   - @posts.each do |post|
-    %li.photo_list__photo
+    %li.user_photo_list__photo
       %ul
         %li.adjustment
           = link_to post_path(post.id) do
