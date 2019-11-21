@@ -59,6 +59,7 @@ $(document).on('turbolinks:load', function() {
         search.forEach(function(searchResult) {
           displayResult(searchResult);
           highlight();
+          $(".search_result").html(search.length + "件ヒット: " + input + " を含む検索結果を表示しています");
         });
       } else {
         noSearchResult("一致する投稿がありません");
@@ -68,4 +69,8 @@ $(document).on('turbolinks:load', function() {
       alert("検索に失敗しました！もう一度検索してください");
     });
   });
+<<<<<<< Updated upstream
 });
+=======
+});
+>>>>>>> Stashed changes

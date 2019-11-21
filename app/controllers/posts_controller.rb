@@ -6,6 +6,11 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order("id DESC").page(params[:page]).per(6)
+    gon.bird_list = BirdList.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -39,9 +44,11 @@ class PostsController < ApplicationController
   end
 
   def search
-    @typed_keyword = params[:keyword]
-    @total_amount = @search.total_count
-    @displayed_amount = @search.length
+    @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(999)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def bird
@@ -65,13 +72,9 @@ class PostsController < ApplicationController
       #  next if keyword == ""
       #  @search = Post.where('name LIKE(?)', "%#{keyword}%")
       #end
-      @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(999)
-      gon.bird_list = BirdList.all
+      
       #@search&.uniq!
-      respond_to do |format|
-        format.html
-        format.json
-      end
+      
       #binding.pry
     end
 
