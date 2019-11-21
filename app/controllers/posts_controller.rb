@@ -5,7 +5,12 @@ class PostsController < ApplicationController
   before_action :fuzzy_search, only: [:index, :search]
 
   def index
-    @posts = Post.all.includes(:user).order("created_at DESC").page(params[:page]).per(6)
+    @posts = Post.includes(:user).order("id DESC").page(params[:page]).per(6)
+    gon.bird_list = BirdList.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -22,7 +27,7 @@ class PostsController < ApplicationController
     @post_lat = @post.map.latitude
     @post_lng = @post.map.longitude
     @comment = Comment.new
-    @comments = @post.comments.includes(:user).order('created_at DESC').page(params[:page]).per(5)
+    @comments = @post.comments.includes(:user).order('id DESC').page(params[:page]).per(5)
     @notice = Comment.where(['post_id = ? AND advice = ?', params[:id], 1]).first
   end
 
@@ -39,9 +44,11 @@ class PostsController < ApplicationController
   end
 
   def search
-    @typed_keyword = params[:keyword]
-    @total_amount = @search.total_count
-    @displayed_amount = @search.length
+    @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(999)
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def bird
@@ -59,7 +66,16 @@ class PostsController < ApplicationController
     end
 
     def fuzzy_search
-      @search = Post.where('name LIKE(?)', "%#{params[:keyword]}%").order('created_at DESC').page(params[:page]).per(6)
+      #@search = []
+      #split_keyword = params[:keyword]&.split(/[[:blank:]]+/)
+      #split_keyword&.each do |keyword|
+      #  next if keyword == ""
+      #  @search = Post.where('name LIKE(?)', "%#{keyword}%")
+      #end
+      
+      #@search&.uniq!
+      
+      #binding.pry
     end
 
     def post_params

@@ -2,23 +2,8 @@
   = render 'layouts/search_form', search: @search
   %h2
     鳥の写真一覧
+  .search_result
   %ul.photo_list
-    - @posts.each do |post|
-      %li.photo_list__photo
-        %ul
-          %li
-            = link_to post_path(post.id) do
-              = image_tag post.photo.url, alt: (post.name)
-          %li
-            名前:
-            %span
-              = post.name
-          %li
-            撮影場所:
-            %span
-              = post.location
-          %li
-            撮影日:
-            %span
-              = post.date
-  = paginate(@posts)
+    = render 'layouts/top_bird_list'
+  -# #abc
+    -# = render 'layouts/search_bird_list'

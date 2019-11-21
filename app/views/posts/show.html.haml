@@ -7,8 +7,8 @@
     var marker = new google.maps.Marker({position: birdLocation, map: map});
   };
 %section
-  - if @notice != nil
-    %p.notice
+  %p.notice
+    - if @notice != nil
       ※この投稿には内容についてのご意見、ご提案コメントが存在します。
   %ul.user_photo
     %li
@@ -30,7 +30,7 @@
     %li
       備考:
       = simple_format(@post.description)
-    - if user_signed_in? && (@post.user.id == current_user.id) then
+    - if user_signed_in? && (@post.user.id == current_user.id)
       %li
         = link_to 'この投稿を編集', edit_post_path
       %li
@@ -38,29 +38,32 @@
 %section
   %h2
     コメントする
-  - if user_signed_in? then
+  - if user_signed_in?
     = render 'layouts/comment_form', post: @post, comment: @comment
   - else
     %p
       投稿するには
       = link_to 'ログイン', new_user_session_path
+      もしくは
+      = link_to '新規登録', new_user_registration_path
       してください
 %section
   %h3
     コメント一覧
   %ul.comment
-    - if @comments.present? then
+    - if @comments.present?
       - @comments.each do |comment|
-        - if comment.advice == 0 then
+        - if comment.advice == 0
           %li
+            .remark
             = link_to (comment.user.nickname), user_path(comment.user.id)
             さん:
             %span
-              ( #{comment.created_at} )
+              ( #{comment.created_at.strftime("%Y年%m月%d日 %H:%M")} )
             %p
               = simple_format(comment.content)
-            - if user_signed_in? && (comment.user.id == current_user.id) then
-              %p
+            .editing_deleting_room
+              - if user_signed_in? && (comment.user.id == current_user.id)
                 = link_to '編集', edit_post_comment_path(@post, comment)
                 = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
         - else
@@ -70,11 +73,11 @@
             = link_to (comment.user.nickname), user_path(comment.user.id)
             さん:
             %span
-              ( #{comment.created_at} )
+              ( #{comment.created_at.strftime("%Y年%m月%d日 %H:%M")} )
             %p
               = simple_format(comment.content)
-            - if user_signed_in? && (comment.user.id == current_user.id) then
-              %p
+            .editing_deleting_room
+              - if user_signed_in? && (comment.user.id == current_user.id)
                 = link_to '編集', edit_post_comment_path(@post, comment)
                 = link_to '削除', post_comment_path(@post, comment), method: :delete, data: { confirm: 'コメントを削除してもよろしいですか？'}
     - else
@@ -82,4 +85,4 @@
         コメントはありません
     = paginate(@comments)
 - if (request.url =~ (/\/posts\/\d+/))
-  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", async: '', defer: 'defer'}
+  %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsId", defer: 'defer'}

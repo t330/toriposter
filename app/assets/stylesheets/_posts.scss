@@ -32,8 +32,19 @@
   background-color: rgb(236, 255, 232);
 }
 
+@mixin usual_link {
+  a {
+    color: rgb(16, 102, 199);
+  }
+  a:hover {
+    color: rgb(86, 136, 194);
+    text-decoration: underline;
+  }
+}
+
 * {
   text-decoration: none;
+  font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
 }
 
 .wrapper {
@@ -127,17 +138,9 @@
       width: calc(100% - 600px);
 
       section {
+        @include usual_link;
         margin: 20px;
         box-sizing: border-box;
-
-        a {
-          color: rgb(16, 102, 199);
-        }
-      
-        a:hover {
-          color: rgb(86, 136, 194);
-          text-decoration: underline;
-        }
 
         h2 {
           width: 30%;
@@ -157,12 +160,16 @@
           margin: 10px 0;
         }
 
+        .highlight {
+          background-color:yellow;
+        }
+
         .search_form {
           display: flex;
           justify-content: flex-end;
           align-items: center;
         
-          input[type='text'] {
+          .search_field {
             border: solid 1px #ccc;
             width: 200px;
             height: 30px;
@@ -202,11 +209,16 @@
             width: 376px;
             line-height: 23px;
 
+            .adjustment {
+              width: 376px;
+              height: 276px;
+              background-color: rgb(124, 124, 124);
+            }
+
             img {
               width: 376px;
               height: 276px;
               object-fit: contain;
-              background-color: rgb(124, 124, 124);
             }
           
             span {
@@ -223,6 +235,7 @@
         }
 
         .notice {
+          height: 16px;
           color: rgb(255, 0, 0);
         }
       
@@ -335,20 +348,23 @@
             span {
               color: rgb(148, 148, 148);
             }
+
+            .editing_deleting_room {
+              height: 16px;
+            }
             
           }
 
           .advice_comment {
             border: solid 2px bisque;
+          }
 
-            .remark {
-              margin: 4px 0;
-              text-align: right;
-              font-style: italic;
-              font-size: 14px;
-              color: rgb(85, 85, 85);
-            }
-
+          .remark {
+            height: 14px;
+            text-align: right;
+            font-style: italic;
+            font-size: 14px;
+            color: rgb(85, 85, 85);
           }
 
         }
@@ -359,6 +375,7 @@
 
     .right_aside {
       @include aside_map_information_background;
+      @include usual_link;
       width: 400px;
 
       p {
@@ -388,6 +405,23 @@
   footer {
     background-color: rgb(211, 211, 211);
 
+<<<<<<< Updated upstream
+    .to_top {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+      background-color: white;
+      
+      #eye_close {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 10px;
+=======
+<<<<<<< Updated upstream
     nav {
       @include nav;
     
@@ -402,8 +436,41 @@
           @include li_hover;
         }
       
+=======
+    .to_top {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      background-color: white;
+      
+      #eye_close {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
       }
-    
+
+      #eye_open {
+        display: none;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+      }
+
+      #eye_open {
+        display: none;
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
     }
 
     .copyright {
