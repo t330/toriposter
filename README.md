@@ -19,7 +19,13 @@ It is an application that a user can post photos of a pigeon.
 * Sharing locations of shot pigeons on Google Maps with users (by using Google Maps API)
 * Pointing out a mistake, for instance, a name of a shot pigeon
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 * Pagination (gem: kaminari)
+=======
+* Pagination (gem: Kaminari)
+<!-- * Highlighting words being searched
+* Auto-complete -->
+>>>>>>> Stashed changes
 * HAML and SCSS notation
 
 =======
