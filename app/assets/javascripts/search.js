@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   function displayResult(searchResult) {
-    var html = `<li class='photo_list__photo'>
+    var html = `<li class='user_photo_list__photo'>
                   <ul>
                     <li class='adjustment'>
                       <a href='/posts/${searchResult.id}'>
@@ -27,16 +27,16 @@ $(document).on('turbolinks:load', function() {
                     </li>
                   </ul>
                 </li>`;
-    $(".photo_list").append(html);
+    $(".user_photo_list").append(html);
   };
   function noSearchResult(msg) {
     var html = `<div class='no_search_result'>${msg}</div>`;
-    $(".photo_list").append(html);
+    $(".user_photo_list").append(html);
   };
   $(".search_field").on("blur keyup change click", function() {
     var input = $(".search_field").val();
     function highlight() {
-      $(".photo_list").highlight(input);
+      $(".user_photo_list").highlight(input);
     };
     $(function() {
       var words = [];
@@ -54,7 +54,7 @@ $(document).on('turbolinks:load', function() {
       dataType: 'json'
     })
     .done(function(search) {
-      $(".photo_list").empty();
+      $(".user_photo_list").empty();
       $(".pagination_style").empty();
       if (search.length !== 0) {
         search.forEach(function(searchResult) {
