@@ -33,7 +33,7 @@ $(document).on('turbolinks:load', function() {
     var html = `<div class='no_search_result'>${msg}</div>`;
     $(".user_photo_list").append(html);
   };
-  $(".search_field").on("blur keyup change click", function() {
+  $(".search_field").on("keyup", function() {
     var input = $(".search_field").val();
     function highlight() {
       $(".user_photo_list").highlight(input);
