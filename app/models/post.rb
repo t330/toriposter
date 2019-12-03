@@ -6,6 +6,8 @@ class Post < ApplicationRecord
   has_one :map, inverse_of: :post, dependent: :destroy
   accepts_nested_attributes_for :map
   has_many :comments, dependent: :destroy
+
+  validates :photo, presence: true
   
   mount_uploader :photo, PhotoUploader
 end
