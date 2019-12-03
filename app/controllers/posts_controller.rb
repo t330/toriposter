@@ -36,11 +36,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post.update(post_params)
+    @post.update(post_params) if @post.user_id == current_user.id
   end
 
   def destroy
-    @post.destroy
+    @post.destroy if @post.user_id == current_user.id
   end
 
   def search
