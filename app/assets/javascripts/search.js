@@ -30,6 +30,7 @@ $(document).on('turbolinks:load', function() {
     $(".user_photo_list").append(html);
   };
   function noSearchResult(msg) {
+    $(".search_result").empty();
     var html = `<div class='no_search_result'>${msg}</div>`;
     $(".user_photo_list").append(html);
   };
@@ -62,6 +63,11 @@ $(document).on('turbolinks:load', function() {
           highlight();
           $(".search_result").html(search.length + "件ヒット: " + input + " を含む検索結果を表示しています");
         });
+        if (input == "") {
+          $(".user_photo_list").empty();
+          $(".search_result").empty();
+          $(".search_result").append("( ˘⊖˘)zzz");
+        };
       } else {
         noSearchResult("一致する投稿がありません");
       };
