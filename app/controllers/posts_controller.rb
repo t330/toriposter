@@ -49,6 +49,7 @@ class PostsController < ApplicationController
       format.html
       format.json
     end
+    @typed_keyword = params[:keyword]
   end
 
   def bird
