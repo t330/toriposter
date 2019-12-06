@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def search
-    @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(999)
+    @search = Post.where('name LIKE ?', "%#{params[:keyword]}%").order('id DESC').page(params[:page]).per(6)
     respond_to do |format|
       format.html
       format.json
