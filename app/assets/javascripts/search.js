@@ -1,4 +1,6 @@
 $(document).on('turbolinks:load', function() {
+  defaultBirdList = $(".user_photo_list").children();
+  defaultPagination = $(".pagination_style").children();
   function displayResult(searchResult) {
     var html = `<li class='user_photo_list__photo'>
                   <ul>
@@ -64,9 +66,10 @@ $(document).on('turbolinks:load', function() {
           $(".search_result").html(search.length + "件ヒット: " + input + " を含む検索結果を表示しています");
         });
         if (input == "") {
-          $(".user_photo_list").empty();
           $(".search_result").empty();
-          $(".search_result").append("( ˘⊖˘)zzz");
+          $(".user_photo_list").empty();
+          $(".user_photo_list").append(defaultBirdList);
+          $(".pagination_style").append(defaultPagination);
         };
       } else {
         noSearchResult("一致する投稿がありません");
