@@ -7,11 +7,9 @@
   background: -webkit-linear-gradient(top, rgb(54, 255, 32), rgb(192, 255, 188));
   background: linear-gradient(to bottom, rgb(54, 255, 32), rgb(192, 255, 188)); 
 }
-
 @mixin ul {
   display: flex;
 }
-
 @mixin li {
   padding: 0 30px;
   display: flex;
@@ -20,18 +18,15 @@
   height: 50px;
   color: #181717;
 }
-
 @mixin li_hover {
   background: -moz-linear-gradient(top, rgb(54, 255, 32), rgb(234, 255, 232));
   background: -webkit-linear-gradient(top, rgb(54, 255, 32), rgb(234, 255, 232));
   background: linear-gradient(to bottom, rgb(54, 255, 32), rgb(234, 255, 232));
   color:#2b2a2a;
 }
-
 @mixin aside_map_information_background {
   background-color: rgb(236, 255, 232);
 }
-
 @mixin usual_link {
   a {
     color: rgb(16, 102, 199);
@@ -41,69 +36,60 @@
     text-decoration: underline;
   }
 }
-
 * {
   text-decoration: none;
   font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
 }
-
 .wrapper {
   width: 1440px;
   margin: auto;
-
-  header {
-    background-color: rgb(16, 187, 1);
-
-    h1 {
-      height: 100px;
-      display: flex;
-      align-items: center;
-      font-size: 1.5em;
-      font-style: italic;
-      color: rgb(0, 0, 0);
-      padding-left: 20px;
-
-      span {
-        font-size: 0.8em;
-        padding-top: 5px;
+  .top_container {
+    display: flex;
+    justify-content: space-between;
+    header {
+      width: 300px;
+      background-color: rgb(16, 187, 1);
+      h1 {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        font-size: 1.5em;
+        font-style: italic;
+        color: rgb(0, 0, 0);
+        padding-left: 20px;
+        span {
+          font-size: 0.8em;
+          padding-top: 5px;
+        }
       }
-
     }
-
-  }
-
-  nav {
-    @include nav;
-
-    ul {
-      @include ul;
-
-      li {
-        @include li;
+    nav {
+      @include nav;
+      ul {
+        @include ul;
+        li {
+          @include li;
+        }
+        li:hover {
+          @include li_hover;
+        }
       }
-
-      li:hover {
-        @include li_hover;
-      }
-
     }
-
   }
-
   &__content {
     display: flex;
-
+    justify-content: space-between;
+    margin: auto;
+    width: 1100px;
     .left_aside {
       width: 200px;
       padding: 20px;
       box-sizing: border-box;
       @include aside_map_information_background;
-
       h3 {
         font-size: 16px;
         margin-bottom: 10px;
       }
-
       li::before {
         display: inline-block;
         content: '';
@@ -112,10 +98,8 @@
         border-radius: 50%;
         background-color: rgb(15, 235, 33);
       }
-
       form {
         display: inline;
-
         input[type='submit'] {
           background: transparent;
           border: none;
@@ -125,54 +109,42 @@
           padding:0;
           border-bottom: dashed 1px transparent;
         }
-
         input[type='submit']:hover {
           border-bottom: dashed 1px rgb(77, 77, 77);
         }
-
       }
-
     }
-
     main {
-      width: calc(100% - 600px);
-
+      width: 840px;
       section {
         @include usual_link;
         margin: 20px;
         box-sizing: border-box;
-
         h2 {
           width: 30%;
           margin-bottom: 30px;
           font-size: 20px;
           border-bottom: solid 3px rgb(6, 216, 17);
         }
-      
         h3 {
           margin-bottom: 30px;
           padding-left: 7px;
           font-size: 18px;
           border-left: solid 10px rgb(6, 216, 17);
         }
-        
         p {
           margin: 10px 0;
         }
-
         .highlight {
           background-color:yellow;
         }
-
         .search_result {
           height: 30px;
         }
-
         .search_form {
           display: flex;
           justify-content: flex-end;
           align-items: center;
-        
           .search_field {
             border: solid 1px #ccc;
             width: 200px;
@@ -180,7 +152,6 @@
             padding-left: 10px;
             border-radius: 4px;
           }
-      
           input[type='submit'] {
             width: 60px;
             height: 30px;
@@ -191,62 +162,48 @@
             cursor: pointer;
             margin-left: 10px;
           }
-          
           input[type='submit']:hover {
             background: -moz-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
             background: -webkit-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
             background: liner-gradient(to bottom, rgb(252, 252, 252), rgb(255, 255, 255));
           }
-
         }
-
         .photo_list {
           display: flex;
           justify-content: space-between;
           flex-wrap: wrap;
-        
           &__photo:nth-child(n+3) {
             margin-top: 35px;
           }
-        
           &__photo {
             width: 376px;
             line-height: 23px;
-
             .adjustment {
               width: 376px;
               height: 276px;
               background-color: rgb(124, 124, 124);
             }
-
             img {
               width: 376px;
               height: 276px;
               object-fit: contain;
             }
-          
             span {
               font-weight: bold;
             }
-          
           }
-        
         }
-      
         .pagination_style {
           line-height: 50px;
           text-align: center;
         }
-
         .notice {
           height: 16px;
           color: rgb(255, 0, 0);
         }
-      
         .user_photo {
           line-height: 30px;
           font-size: 18px;
-        
           &__photo_detail {
             box-sizing: border-box;
             width: 720px;
@@ -254,42 +211,32 @@
             margin: 0 auto 20px;
             border: 16px ridge rgb(95, 52, 3);
             background-color: #9e9e9e;
-          
             img {
               width: 688px;
               height: 508px;
               object-fit: contain;
             }
-
           }
-
           #user_map_info {
             width: 500px;
             height: 300px;
           }
-        
         }
-
         .object {
           margin-top: 20px;
-        
           &__property {
             margin-top: 10px;
-        
             input[type='file'] {
               cursor: pointer;
             }
-          
             select {
               border: solid 1px #ccc;
               height: 30px;
             }
-
             .location_selection {
               margin: 10px 0;
               display: flex;
               align-items: center;
-
               input[type='textbox'] {
                 width: 250px;
                 height: 30px;
@@ -297,7 +244,6 @@
                 border-radius: 4px;
                 padding-left: 10px;
               }
-
               input[type='button'] {
                 width: 60px;
                 height: 30px;
@@ -305,21 +251,17 @@
                 border-radius: 4px;
                 margin-left: 10px;
               }
-
             }
-
             #map {
               width: 400px;
               height: 250px;
             }
-
             textarea {
               border: solid 1px #ccc;
               border-radius: 4px;
               width: 400px;
               height: 100px;
             }
-
             &__button_for_posting_photo {
               width: 60px;
               height: 30px;
@@ -329,40 +271,30 @@
               background: liner-gradient(to bottom, rgb(88, 248, 96), rgb(188, 253, 191));
               cursor: pointer;
             }
-
             &__button_for_posting_photo:hover {
               background: -moz-linear-gradient(top, rgb(127, 248, 133), rgb(224, 253, 226));
               background: -webkit-linear-gradient(top, rgb(127, 248, 133), rgb(224, 253, 226));
               background: liner-gradient(to bottom, rgb(127, 248, 133), rgb(224, 253, 226));
             }
-        
           }
-        
         }
-        
         .comment {
           width: 500px;
-
           li {
             margin: 10px 0;
             padding: 5px;
             border-radius: 4px;
             border: solid 2px transparent;
-
             span {
               color: rgb(148, 148, 148);
             }
-
             .editing_deleting_room {
               height: 16px;
             }
-            
           }
-
           .advice_comment {
             border: solid 2px bisque;
           }
-
           .remark {
             height: 14px;
             text-align: right;
@@ -370,45 +302,34 @@
             font-size: 14px;
             color: rgb(85, 85, 85);
           }
-
         }
-      
       }
-
     }
-
+  }
     .right_aside {
       @include aside_map_information_background;
       @include usual_link;
       width: 400px;
-
+      margin: auto;
       p {
         margin-top: 15px;
         text-align: center;
       }
-
       h3 {
         margin: 15px 0;
         text-align: center;
         font-size: 18px;
       }
-
       #map_info {
         width: 400px;
         height: 400px;
       }
-
       li {
         margin: 20px;
       }
-
     }
-
-  }
-
   footer {
     background-color: rgb(211, 211, 211);
-
     .to_top {
       position: fixed;
       right: 0;
@@ -417,14 +338,12 @@
       height: 100px;
       cursor: pointer;
       background-color: white;
-      
       #eye_close {
         width: 100px;
         height: 100px;
         object-fit: cover;
         border-radius: 10px;
       }
-
       #eye_open {
         display: none;
         width: 100px;
@@ -432,40 +351,28 @@
         object-fit: cover;
         border-radius: 10px;
       }
-
     }
-
     nav {
       @include nav;
-    
       ul {
         @include ul;
-      
         li {
           @include li;
         }
-      
         li:hover {
           @include li_hover;
         }
-      
       }
-
     }
-
     .copyright {
       height: 100px;
       display: flex;
       align-items: center;
       justify-content: center;
-
       span {
         font-size: 0.8em;
         padding-top: 3px;
       }
-
     }
-
   }
-
 }
