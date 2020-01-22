@@ -9,7 +9,6 @@
     padding-left: 10px;
     border-radius: 4px;
   }
-
   input[type='password'] {
     border: solid 1px #ccc;
     width: 200px;
@@ -17,11 +16,9 @@
     padding-left: 10px;
     border-radius: 4px;
   }
-
   input[type='checkbox'] {
     cursor: pointer;
   }
-
   .general_button {
     width: 60px;
     height: 30px;
@@ -31,46 +28,36 @@
     background: liner-gradient(to bottom, rgb(243, 243, 243), rgb(255, 255, 255));
     cursor: pointer;
   }
-  
   .general_button:hover {
     background: -moz-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
     background: -webkit-linear-gradient(top, rgb(252, 252, 252), rgb(255, 255, 255));
     background: liner-gradient(to bottom, rgb(252, 252, 252), rgb(255, 255, 255));
   }
-
 .user_photo_list {
   display: flex;
   flex-wrap: wrap;
-
   &__photo:nth-child(3n+1) {
     margin-left: 0;
   }
-
   &__photo:nth-child(n+4) {
     margin-top: calc(56px / 2);
   }
-
   &__photo {
     width: 248px;
     margin-left: calc(56px / 2);
     line-height: 18px;
-
     .adjustment {
       width: 248px;
       height: 186px;
       background-color: rgb(124, 124, 124);
     }
-
     img {
       width: 248px;
       height: 186px;
       object-fit: contain;
     }
-
     span {
       font-weight: bold;
     }
-  
   }
-
 }
