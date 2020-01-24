@@ -11,10 +11,11 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .wrapper
-      = render 'layouts/header'
-      = render 'layouts/nav'
+      .top_container
+        = render 'layouts/header'
+        = render 'layouts/nav'
       .wrapper__content
-        = render 'layouts/left_aside'
+        /= render 'layouts/left_aside'
         %main
           = yield
         = render 'layouts/right_aside'
