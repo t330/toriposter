@@ -30,10 +30,15 @@
   .object
     .object__property
       %label.object__property__icon
-        = fa_icon 'camera'
-        = f.file_field :photo, placeholder: '写真'
+        = fa_icon 'photo'
+        = f.file_field :photo, id: 'selected_photo', accept: 'image/*', placeholder: '写真'
       %span
         (←アイコンをクリック)
+      .object__property__preview
+        .object__property__preview__text
+          %span
+            Preview:
+        .object__property__preview__photo
   .object
     = f.label :name, '種名(亜種名):'
     .object__property

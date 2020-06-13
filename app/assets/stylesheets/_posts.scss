@@ -252,7 +252,25 @@ background-color: #c8c9c8;
               font-size: 15px;
               color: rgb(71, 71, 71);
             }
-
+            &__preview {
+              float: right;
+              &__text {
+                span {
+                  font-size: 13px;
+                }
+              }
+              &__photo {
+                border: dashed 5px #ccc;
+                box-sizing: content-box;
+                width: 200px;
+                height: 150px;
+                img {
+                  width: 200px;
+                  height: 150px;
+                  object-fit: contain;
+                }
+              }
+            }
             select {
               border: solid 1px #ccc;
               height: 30px;
