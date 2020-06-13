@@ -29,7 +29,11 @@
 = form_with model: @post, local: true do |f|
   .object
     .object__property
-      = f.file_field :photo, placeholder: '写真'
+      %label.object__property__icon
+        = fa_icon 'camera'
+        = f.file_field :photo, placeholder: '写真'
+      %span
+        (←アイコンをクリック)
   .object
     = f.label :name, '種名(亜種名):'
     .object__property

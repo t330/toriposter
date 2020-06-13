@@ -241,6 +241,18 @@ background-color: #c8c9c8;
             input[type='file'] {
               cursor: pointer;
             }
+            &__icon {
+              cursor: pointer;
+              font-size: 25px;
+              input[type='file'] {
+                display: none;
+              }
+            }
+            span {
+              font-size: 15px;
+              color: rgb(71, 71, 71);
+            }
+
             select {
               border: solid 1px #ccc;
               height: 30px;
