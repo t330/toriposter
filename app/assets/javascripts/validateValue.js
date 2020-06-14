@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = document.addEventListener("turbolinks:load", function() {
   document.getElementById('submit').onclick = function(click) {
     const selectedPhoto = document.getElementById('selected_photo').value;
     const latitude = document.getElementById('latitude').value;
@@ -8,4 +8,4 @@ window.onload = function() {
       window.alert("「※」の項目で未入力のものがあります★");
     }
   };
-};
+});
