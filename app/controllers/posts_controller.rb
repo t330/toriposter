@@ -20,7 +20,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
+    if @post.save
+      
+    else
+      render "posts/new"
+    end
   end
 
   def show

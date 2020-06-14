@@ -23,3 +23,14 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
+
+  activerecord:
+    models:
+      post: "ポスト"
+      map: "地図"
+    attributes:
+      post: 
+        photo: "写真"
+      map:
+        latitude: "地図の経度"
+        longitude: "地図の緯度"

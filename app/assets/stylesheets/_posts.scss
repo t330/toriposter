@@ -36,6 +36,10 @@
     text-decoration: underline;
   }
 }
+@mixin required_field {
+  color: red;
+  font-weight: bold;
+}
 * {
   text-decoration: none;
   font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
@@ -130,7 +134,10 @@ background-color: #c8c9c8;
       width: 770px;
       section {
         @include usual_link;
-        margin: 20px;
+        .required {
+          @include required_field;
+        }
+          margin: 20px;
         box-sizing: border-box;
         h2 {
           width: 30%;
@@ -234,9 +241,21 @@ background-color: #c8c9c8;
             height: 300px;
           }
         }
+        .alert {
+          color: #262626; 
+          background: #FFEBE8;
+          border: 2px solid #990000;
+          padding: 12px;
+        }
         .object {
+          .required {
+            @include required_field;
+          }
           margin-top: 20px;
           &__property {
+            .required {
+              @include required_field;
+            }
             margin-top: 10px;
             input[type='file'] {
               cursor: pointer;
@@ -247,10 +266,6 @@ background-color: #c8c9c8;
               input[type='file'] {
                 display: none;
               }
-            }
-            span {
-              font-size: 15px;
-              color: rgb(71, 71, 71);
             }
             &__preview {
               float: right;

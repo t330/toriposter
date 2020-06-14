@@ -5,6 +5,6 @@ class BirdList < ActiveHash::Base
     {id: 7, name: 'キンバト'}, {id: 8, name: 'クロアゴヒメアオバト'}, {id: 9, name: 'シラコバト'},
     {id: 10, name: 'ズアカアオバト'}, {id: 11, name: 'チュウダイズアカアオバト'}, {id: 12, name: 'ヒメモリバト'},
     {id: 13, name: 'ベニバト'}, {id: 14, name: 'ヨナグニカラスバト'}, {id: 15, name: 'リュウキュウカラスバト'},
-    {id: 16, name: 'リュウキュウキジバト'}, {id: 17, name: 'その他'}
+    {id: 16, name: 'リュウキュウキジバト'}, {id: 17, name: 'その他'}, {id: 18, name: '不明'}
   ]
 end

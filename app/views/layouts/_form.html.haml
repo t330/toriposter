@@ -26,14 +26,20 @@
       };
     });
   };
+%p
+  「
+  %span.required
+    ※
+  」は必須項目です
 = form_with model: @post, local: true do |f|
+  = render 'layouts/error_messages', model: f.object
   .object
     .object__property
       %label.object__property__icon
         = fa_icon 'photo'
         = f.file_field :photo, id: 'selected_photo', accept: 'image/*', placeholder: '写真'
-      %span
-        (←アイコンをクリック)
+      %span.required
+        ※
       .object__property__preview
         .object__property__preview__text
           %span
@@ -41,6 +47,8 @@
         .object__property__preview__photo
   .object
     = f.label :name, '種名(亜種名):'
+    %span.required
+      ※
     .object__property
       = f.collection_select :name, BirdList.all, :name, :name, prompt: '--'
   .object
@@ -53,9 +61,11 @@
       = f.collection_select :location, Prefecture.all, :name, :name, prompt: '--'
   .object
     = f.label :latitude, '座標を選んでください:'
+    %span.required
+      ※
     .object__property
       .location_selection
-        %input#address{type: "textbox", placeholder: '場所などを入力してください（例：京都駅'}/
+        %input#address{type: "textbox", placeholder: '場所を入力してください（例：京都駅'}/
         %input{onclick: "codeAddress()", type: "button", value: "検索"}/
         = f.fields_for :map do |m| 
           = m.hidden_field :latitude, id: 'latitude'
@@ -66,6 +76,6 @@
     .object__property
       = f.text_area :description
   .object
-    = f.submit '送信', class: 'object__property__button_for_posting_photo'
+    = f.submit '送信', id: 'submit', class: 'object__property__button_for_posting_photo'
 - if request.url =~ /\/posts\/new/ || request.url =~ /\/posts\/\d+/
   %script{src: "https://maps.googleapis.com/maps/api/js?key=#{Rails.application.credentials.api[:google_maps_api_key]}&callback=postsNew", defer: 'defer'}
