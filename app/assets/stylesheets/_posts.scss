@@ -36,6 +36,10 @@
     text-decoration: underline;
   }
 }
+@mixin required_field {
+  color: red;
+  font-weight: bold;
+}
 * {
   text-decoration: none;
   font-family: 'Hiragino Kaku Gothic ProN', sans-serif;
@@ -130,7 +134,10 @@ background-color: #c8c9c8;
       width: 770px;
       section {
         @include usual_link;
-        margin: 20px;
+        .required {
+          @include required_field;
+        }
+          margin: 20px;
         box-sizing: border-box;
         h2 {
           width: 30%;
@@ -234,12 +241,50 @@ background-color: #c8c9c8;
             height: 300px;
           }
         }
+        .alert {
+          color: #262626; 
+          background: #FFEBE8;
+          border: 2px solid #990000;
+          padding: 12px;
+        }
         .object {
+          .required {
+            @include required_field;
+          }
           margin-top: 20px;
           &__property {
+            .required {
+              @include required_field;
+            }
             margin-top: 10px;
             input[type='file'] {
               cursor: pointer;
+            }
+            &__icon {
+              cursor: pointer;
+              font-size: 25px;
+              input[type='file'] {
+                display: none;
+              }
+            }
+            &__preview {
+              float: right;
+              &__text {
+                span {
+                  font-size: 13px;
+                }
+              }
+              &__photo {
+                border: dashed 5px #ccc;
+                box-sizing: content-box;
+                width: 200px;
+                height: 150px;
+                img {
+                  width: 200px;
+                  height: 150px;
+                  object-fit: contain;
+                }
+              }
             }
             select {
               border: solid 1px #ccc;
