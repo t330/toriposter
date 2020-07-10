@@ -3,6 +3,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :check_correct_user, only: [:edit, :update, :destroy]
   before_action :fuzzy_search, only: [:index, :search]
+  before_action :basic_authentication, only: [:test]
+
+  def basic_authentication
+    authenticate_or_request_with_http_basic do |name, password|
+      name == "abcd" && password == "1234"
+    end
+  end
 
   def index
     @posts = Post.includes(:user).order("id DESC").page(params[:page]).per(6)

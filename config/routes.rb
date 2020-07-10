@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'bird'
+      get 'test'
     end
 
   end
