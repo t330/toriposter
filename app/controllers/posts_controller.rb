@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   before_action :basic_authentication, only: [:test]
 
   def basic_authentication
+    render layout: false
     authenticate_or_request_with_http_basic do |name, password|
       name == "abcd" && password == "1234"
     end
