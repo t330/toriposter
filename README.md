@@ -2,7 +2,7 @@
 
 It is an application that a user can post photos of a pigeon.
 
-* URL: http://18.176.27.147/
+* URL: ~~http://18.176.27.147/~~
 
 # Development Environment
 
@@ -14,7 +14,7 @@ It is an application that a user can post photos of a pigeon.
 # Implemented Functions
 
 * Creating a user account (gem: Devise)
-* Posting a photo, and editing or deleting it (strage: AWS S3, uploader: CarrierWave)
+* Posting a photo, and editing or deleting it (storage: AWS S3, uploader: CarrierWave)
 * Making a comment on a posted photo, and editing or deleting this comment
 * Sharing locations of photographed pigeons on Google Maps with users (by using Google Maps API)
 * Pointing out a mistake, for instance, a name of a photographed pigeon
